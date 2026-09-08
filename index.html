@@ -1,0 +1,627 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IRL — Dating for people with full lives</title>
+<meta name="description" content="IRL is a weekly dating app for Ho Chi Minh City. Fewer, curated introductions that turn into real dates — not another inbox to manage.">
+
+<!-- ======================================================================
+     GOOGLE FONT — Inter. Swap the href / font-family in style.css to change type.
+====================================================================== -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<!-- Styles live in style.css, next to this file -->
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<!-- ==========================================================================
+     NAV
+========================================================================== -->
+<header class="nav" id="siteNav">
+  <div class="nav__inner container">
+    <a href="#top" class="nav__logo">IRL</a>
+
+    <nav class="nav__links" id="navLinks">
+      <a href="#how-it-works">How it Works</a>
+      <a href="#different">Why IRL</a>
+      <a href="#who">Who it's for</a>
+      <a href="#faq">FAQ</a>
+      <a href="#waitlist" class="btn btn--primary btn--small" style="margin-top:8px;">Join Waitlist</a>
+    </nav>
+
+    <div class="nav__actions">
+      <a href="#waitlist" class="btn btn--primary btn--small">Join Waitlist</a>
+      <button class="nav__toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="navLinks">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- ==========================================================================
+       1. HERO
+  ========================================================================== -->
+  <section class="hero" id="top">
+    <div class="container hero__inner">
+      <div class="hero__content reveal">
+        <p class="eyebrow">Now building in Ho Chi Minh City</p>
+        <h1>Dating for people <span class="text-accent">with full lives.</span></h1>
+        <p class="hero__subhead">
+          Dating doesn't need more matches. It needs more credible intention.
+          IRL runs on a weekly rhythm - curated, reviewed introductions that move
+          toward one thing: an actual date, not another inbox.
+        </p>
+        <div class="hero__ctas">
+          <a href="#waitlist" class="btn btn--primary btn--large">Join the Waitlist</a>
+          <a href="#how-it-works" class="btn btn--ghost">See how it works ↓</a>
+        </div>
+        <p class="hero__microcopy">Free to join · Founding cohort of 500 · Launching in Saigon</p>
+      </div>
+
+      <!-- A single live demo card: "Not this week" cycles a sample
+           introduction, "I'd be up for this" reveals the mutual-curiosity
+           note — see script.js. -->
+
+      <div class="hero__visual reveal reveal--delay-2">
+        <div class="hero__photo-slot" aria-hidden="true"></div>
+        <!-- A single sample introduction. Photos are stock photos from
+             Unsplash (free license, hotlinked — https://unsplash.com/license),
+             standing in for the kind of headshot a real profile would use. -->
+        <div class="hero__card glass--navy glass hero__card--main">
+          <div class="hero__match-photo" id="heroMatchPhoto">
+            <span class="hero__match-badge">This week</span>
+            <div class="hero__match-id">
+              <strong id="heroDemoName">Hà, 24</strong>
+              <span id="heroDemoTag">Research · films · tiny cafés</span>
+            </div>
+          </div>
+          <div class="hero__match-body">
+            <p class="hero__card-label">Someone for Sunday</p>
+            <p class="hero__card-title" id="heroDemoPlan">Gallery · Saturday afternoon</p>
+            <p class="hero__card-quote" id="heroDemoQuote">"My ideal Sunday starts with good coffee and nowhere urgent to be."</p>
+            <div class="hero__card-actions">
+              <button type="button" class="btn btn--ghost btn--small" id="heroNotThisWeek">Not this week</button>
+              <button type="button" class="btn btn--primary btn--small" id="heroUpForThis">I'd be up for this</button>
+            </div>
+            <div class="hero__mutual-note" id="heroMutualNote" hidden>
+              <strong>You're both curious.</strong>
+              <span>A short get-to-know window opens next — still feeling it by Friday? Lock in a real plan.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       2. THE PROBLEM
+  ========================================================================== -->
+  <section class="problem section-alt" id="problem">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow eyebrow--center">The problem</span>
+        <h2>Endless swiping. Endless texting. Rarely a real date.</h2>
+        <p>The apps in your phone right now are optimized for attention, not outcomes.
+          More matches just means more people to manage — not more people to meet.</p>
+      </div>
+
+      <div class="problem__grid">
+        <div class="problem__card problem__card--bad glass reveal reveal--delay-1">
+          <h3>What you have now</h3>
+          <ul>
+            <li>Hundreds of matches, most going nowhere</li>
+            <li>Weeks-long chats before anyone suggests a date</li>
+            <li>Profiles you can't really trust until you meet</li>
+            <li>Ghosting with zero closure, on both sides</li>
+          </ul>
+        </div>
+        <div class="problem__card problem__card--good glass glass--navy reveal reveal--delay-2">
+          <h3>What IRL gives you</h3>
+          <ul>
+            <li>A handful of introductions, chosen with intention</li>
+            <li>A short window before you commit to a real plan</li>
+            <li>Every profile reviewed before you ever see it</li>
+            <li>A private, honest signal after you meet — no guessing</li>
+          </ul>
+        </div>
+      </div>
+
+      <p class="problem__lede reveal">
+        IRL asks one question every week: are you meeting someone worth your Saturday?
+      </p>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       3. HOW IT WORKS — YOUR WEEK WITH IRL
+  ========================================================================== -->
+  <section class="how" id="how-it-works">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow eyebrow--center">How it works</span>
+        <h2>Your week with IRL</h2>
+        <p>One rhythm, every week — designed to end in a real date, not a longer chat thread.</p>
+      </div>
+
+      <!-- Four phases instead of a numbered day-by-day stepper, each its own
+           full-width row: the whole "getting matched" week (Mon–Thu) is
+           summarized in one box, then Friday / Weekend / After each get
+           their own box below it. -->
+      <div class="timeline">
+        <div class="timeline__step reveal">
+          <div class="timeline__content glass glass--navy">
+            <span class="timeline__day">Monday – Thursday</span>
+            <p class="timeline__title">Get matched, on your terms</p>
+            <p class="timeline__desc">Set your weekend intention, get a handful of curated introductions, and — if nothing clicks right away — a Second Chance round before the week's out. All without it turning into another inbox.</p>
+          </div>
+        </div>
+        <div class="timeline__step reveal reveal--delay-1">
+          <div class="timeline__content glass glass--navy">
+            <span class="timeline__day">Friday</span>
+            <p class="timeline__title">Commit to a real plan</p>
+            <p class="timeline__desc">Lock in a time and place. No more "we should hang out sometime."</p>
+          </div>
+        </div>
+        <div class="timeline__step timeline__step--weekend reveal reveal--delay-2">
+          <div class="timeline__content glass">
+            <span class="timeline__day">Weekend</span>
+            <p class="timeline__title">Meet in person</p>
+            <p class="timeline__desc">The whole point. An actual date, at an actual place, in your actual city.</p>
+          </div>
+        </div>
+        <div class="timeline__step reveal reveal--delay-3">
+          <div class="timeline__content glass glass--navy">
+            <span class="timeline__day">After</span>
+            <p class="timeline__title">Answer "See Again?"</p>
+            <p class="timeline__desc">Privately signal real interest — low-pressure, no ghosting, no guessing games.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       3B. FRIDAY — CHAT HAS ONE JOB
+  ========================================================================== -->
+  <section class="chat-demo section-alt" id="chat-demo">
+    <div class="container chat-demo__inner">
+      <div class="chat-demo__copy reveal">
+        <span class="eyebrow">Friday</span>
+        <h2>Chat has one job: help you actually show up.</h2>
+        <p>IRL doesn't put your whole date inside a form. You talk normally — the product only structures the one thing that matters most: when you're actually meeting.</p>
+        <p class="chat-demo__note">Mutual curiosity means "you seem worth getting to know." A confirmed time means "we're ready to meet."</p>
+      </div>
+
+      <!-- Illustrative only — nothing here is sent anywhere, see script.js -->
+      <div class="chat-demo__mock glass reveal reveal--delay-1">
+        <div class="chat-demo__head">
+          <div>
+            <strong>Khôi &amp; Linh</strong>
+            <span>Bookstore + coffee · Sunday</span>
+          </div>
+          <span class="chat-demo__tag">Friday</span>
+        </div>
+        <div class="chat-demo__bubble chat-demo__bubble--them">Book Street?</div>
+        <div class="chat-demo__bubble chat-demo__bubble--me">Yep. 10ish?</div>
+        <div class="chat-demo__timecard" id="chatTimeCard">
+          <strong id="chatTimeText">Khôi suggested Sunday · 10:00 AM</strong>
+          <div class="chat-demo__row">
+            <button type="button" class="btn btn--ghost btn--small" id="chatSuggestLater">Another time</button>
+            <button type="button" class="btn btn--primary btn--small" id="chatConfirm">Confirm</button>
+          </div>
+        </div>
+        <div class="chat-demo__confirmed" id="chatConfirmed" hidden>
+          <strong>It's officially on the calendar.</strong>
+          <span>Sunday · 10:00 AM confirmed. Pick the place between you and go enjoy the date.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       4. WHAT MAKES IRL DIFFERENT
+  ========================================================================== -->
+  <section class="different" id="different">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow eyebrow--center">Why IRL</span>
+        <h2>What makes IRL different</h2>
+        <p>Three decisions that change what dating feels like — before, during, and after the date.</p>
+      </div>
+
+      <div class="features">
+        <div class="feature-card glass reveal">
+          <div class="feature-card__icon">✓</div>
+          <h3>Reviewed Profiles</h3>
+          <p>Every profile is reviewed before you ever see it — so trust is built upfront, not earned after a week of back-and-forth texting.</p>
+        </div>
+        <div class="feature-card glass reveal reveal--delay-1">
+          <div class="feature-card__icon">◆</div>
+          <h3>Fewer, Better Introductions</h3>
+          <p>We trade infinite swiping for a handful of intentional introductions a week — quality curation over endless scroll.</p>
+        </div>
+        <div class="feature-card glass reveal reveal--delay-2">
+          <div class="feature-card__icon">↻</div>
+          <h3>See Again, Not Just Matched</h3>
+          <p>After you meet, a private, low-pressure "See Again?" lets you signal real interest — without the awkwardness of asking first.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       5. WHO IT'S FOR
+  ========================================================================== -->
+  <section class="who section-alt" id="who">
+    <div class="container who__inner">
+      <div class="reveal">
+        <span class="eyebrow">Who it's for</span>
+        <h2>Built for people whose calendars are already full.</h2>
+        <p>
+          Early meetings, back-to-back calls, a gym session you're not skipping,
+          a group chat planning Saturday's game. Your week is already full —
+          dating just needs to fit into it, not compete with it. IRL trades the
+          hours of swiping and small talk for a rhythm that respects your time
+          and still gets you to a real table, across from a real person.
+        </p>
+      </div>
+
+      <!-- Real stock photos from Unsplash (free to use, hotlinked directly —
+           see https://unsplash.com/license). Swap any of these four `url(...)`
+           values in style.css (.who__collage .c1 / .c2 / .c3 / .c4) for your
+           own photography whenever it's ready; captions stay as overlay text. -->
+      <div class="who__collage reveal reveal--delay-2" aria-hidden="true">
+        <div class="c1">Rooftop, golden hour</div>
+        <div class="c2">Weekend badminton</div>
+        <div class="c3">City lights, dinner for two</div>
+        <div class="c4">Early session, done by 7am</div>
+      </div>
+    </div>
+
+    <!-- ======================================================================
+         ROOMS — an interactive swipe-deck demo. "Not this time" drops the
+         top card away to reveal the next Room underneath; "I'm interested"
+         flashes a joined badge, then the card lifts off the same way. Purely
+         illustrative — see the "ROOMS SWIPE DECK" section in script.js. No
+         real signups happen here.
+    ====================================================================== -->
+    <div class="container">
+      <div class="rooms reveal reveal--delay-3">
+        <div class="rooms__head">
+          <h3>Prefer a lower-key first move?</h3>
+          <p>Rooms are casual group activities — swipe through this week's and join whichever fits your Saturday.</p>
+        </div>
+
+        <div class="rooms-stack" id="roomsStack">
+          <div class="room-card">
+            <div class="room-card__visual" style="background:linear-gradient(135deg, var(--navy-700), var(--navy-950));">
+              <span class="room-card__icon" aria-hidden="true">🏸</span>
+            </div>
+            <div class="room-card__body">
+              <span class="room-card__day">Saturday · 4:00 PM</span>
+              <h4 class="room-card__title">Weekend Badminton</h4>
+              <p class="room-card__desc">Casual doubles at District 3 — no experience needed, just show up.</p>
+              <span class="room-card__meta">6 going · District 3</span>
+            </div>
+            <div class="room-card__actions">
+              <button type="button" class="btn btn--ghost" data-room-action="pass">Not this time</button>
+              <button type="button" class="btn btn--primary" data-room-action="join">I'm interested</button>
+            </div>
+            <span class="room-card__joined-badge">✓ You're in</span>
+          </div>
+
+          <div class="room-card">
+            <div class="room-card__visual" style="background:linear-gradient(135deg, var(--glow), var(--navy-700));">
+              <span class="room-card__icon" aria-hidden="true">🎾</span>
+            </div>
+            <div class="room-card__body">
+              <span class="room-card__day">Sunday · 9:00 AM</span>
+              <h4 class="room-card__title">Pickleball Meetup</h4>
+              <p class="room-card__desc">Beginner-friendly courts in Thao Dien — paddles provided, just bring shoes.</p>
+              <span class="room-card__meta">8 going · Thao Dien</span>
+            </div>
+            <div class="room-card__actions">
+              <button type="button" class="btn btn--ghost" data-room-action="pass">Not this time</button>
+              <button type="button" class="btn btn--primary" data-room-action="join">I'm interested</button>
+            </div>
+            <span class="room-card__joined-badge">✓ You're in</span>
+          </div>
+
+          <div class="room-card">
+            <div class="room-card__visual" style="background:linear-gradient(135deg, var(--accent), var(--accent-dark));">
+              <span class="room-card__icon" aria-hidden="true">🏃</span>
+            </div>
+            <div class="room-card__body">
+              <span class="room-card__day">Tuesday · 6:00 AM</span>
+              <h4 class="room-card__title">Morning Run Club</h4>
+              <p class="room-card__desc">An easy 5K along the riverside before work — done by 7, coffee after.</p>
+              <span class="room-card__meta">12 going · District 1</span>
+            </div>
+            <div class="room-card__actions">
+              <button type="button" class="btn btn--ghost" data-room-action="pass">Not this time</button>
+              <button type="button" class="btn btn--primary" data-room-action="join">I'm interested</button>
+            </div>
+            <span class="room-card__joined-badge">✓ You're in</span>
+          </div>
+
+          <div class="room-card">
+            <div class="room-card__visual" style="background:linear-gradient(135deg, var(--navy-500), var(--navy-950));">
+              <span class="room-card__icon" aria-hidden="true">🧘</span>
+            </div>
+            <div class="room-card__body">
+              <span class="room-card__day">Sunday · 6:30 PM</span>
+              <h4 class="room-card__title">Rooftop Yoga</h4>
+              <p class="room-card__desc">A slow flow session as the sun sets — mats on-site, all levels welcome.</p>
+              <span class="room-card__meta">5 going · District 2</span>
+            </div>
+            <div class="room-card__actions">
+              <button type="button" class="btn btn--ghost" data-room-action="pass">Not this time</button>
+              <button type="button" class="btn btn--primary" data-room-action="join">I'm interested</button>
+            </div>
+            <span class="room-card__joined-badge">✓ You're in</span>
+          </div>
+
+          <div class="room-card">
+            <div class="room-card__visual" style="background:linear-gradient(135deg, var(--navy-950), var(--accent-dark));">
+              <span class="room-card__icon" aria-hidden="true">🎲</span>
+            </div>
+            <div class="room-card__body">
+              <span class="room-card__day">Friday · 7:00 PM</span>
+              <h4 class="room-card__title">Board Games &amp; Coffee</h4>
+              <p class="room-card__desc">A low-key café hangout — new games each week, no team required.</p>
+              <span class="room-card__meta">4 going · District 3</span>
+            </div>
+            <div class="room-card__actions">
+              <button type="button" class="btn btn--ghost" data-room-action="pass">Not this time</button>
+              <button type="button" class="btn btn--primary" data-room-action="join">I'm interested</button>
+            </div>
+            <span class="room-card__joined-badge">✓ You're in</span>
+          </div>
+
+          <div class="rooms-stack__empty" id="roomsEmpty" hidden>
+            <p>You're all caught up — new Rooms open every week.</p>
+            <button type="button" class="btn btn--ghost" id="roomsReset">See them again</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       6. SOCIAL PROOF / FOUNDING COHORT
+  ========================================================================== -->
+  <section class="proof" id="proof">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow eyebrow--center">Founding cohort</span>
+        <h2>Founding members from Saigon's most active communities</h2>
+        <p>We're building the first cohort alongside the running clubs, sports groups, and professional networks already shaping how young Saigon spends its evenings and weekends.</p>
+      </div>
+
+      <!-- placeholder: replace with real community/club logos once partnerships are confirmed -->
+      <div class="proof__logos reveal">
+        <div class="proof__logo">Running Club</div>
+        <div class="proof__logo">Padel Saigon</div>
+        <div class="proof__logo">MNC Alumni Network</div>
+        <div class="proof__logo">Badminton Collective</div>
+        <div class="proof__logo">Founders Circle</div>
+        <div class="proof__logo">D1 Coworking</div>
+      </div>
+
+      <!-- Testimonial swiper: a native scroll-snap track (swipeable by touch
+           or drag out of the box) plus prev/next buttons and dots, all driven
+           by plain JS in script.js — no carousel library. -->
+      <div class="testi-swiper reveal">
+        <div class="testi-track" id="testiTrack">
+          <!-- placeholder: replace each slide's quote + first name/role with a real founding-member testimonial once collected -->
+          <div class="testi-slide glass">
+            <p class="testi-quote">"I don't have time to manage three dating apps. I have time for one good date on Saturday."</p>
+            <div class="testi-who">
+              <!-- placeholder: real headshot photo of this founding member -->
+              <div class="testi-avatar" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="4" fill="currentColor"/><path d="M4 20c0-4.418 3.582-7 8-7s8 2.582 8 7" fill="currentColor"/></svg>
+              </div>
+              <div><strong>Early access member</strong><span>Finance, District 1</span></div>
+            </div>
+          </div>
+          <div class="testi-slide glass">
+            <p class="testi-quote">"Knowing profiles are actually reviewed changed how I show up to the first date — way less guessing."</p>
+            <div class="testi-who">
+              <!-- placeholder: real headshot photo of this founding member -->
+              <div class="testi-avatar" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="4" fill="currentColor"/><path d="M4 20c0-4.418 3.582-7 8-7s8 2.582 8 7" fill="currentColor"/></svg>
+              </div>
+              <div><strong>Early access member</strong><span>Tech, Thao Dien</span></div>
+            </div>
+          </div>
+          <div class="testi-slide glass">
+            <p class="testi-quote">"The weekly rhythm just fits. I set my intention Monday and by Saturday I'm actually at dinner."</p>
+            <div class="testi-who">
+              <!-- placeholder: real headshot photo of this founding member -->
+              <div class="testi-avatar" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="4" fill="currentColor"/><path d="M4 20c0-4.418 3.582-7 8-7s8 2.582 8 7" fill="currentColor"/></svg>
+              </div>
+              <div><strong>Early access member</strong><span>Consulting, District 3</span></div>
+            </div>
+          </div>
+          <div class="testi-slide glass">
+            <p class="testi-quote">"Reviewed profiles meant I wasn't starting from zero trust. It just... worked."</p>
+            <div class="testi-who">
+              <!-- placeholder: real headshot photo of this founding member -->
+              <div class="testi-avatar" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="4" fill="currentColor"/><path d="M4 20c0-4.418 3.582-7 8-7s8 2.582 8 7" fill="currentColor"/></svg>
+              </div>
+              <div><strong>Early access member</strong><span>Marketing, District 2</span></div>
+            </div>
+          </div>
+          <div class="testi-slide glass">
+            <p class="testi-quote">"I used to have three apps open and zero dates on the calendar. Now I have one, and an actual Saturday plan."</p>
+            <div class="testi-who">
+              <!-- placeholder: real headshot photo of this founding member -->
+              <div class="testi-avatar" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="4" fill="currentColor"/><path d="M4 20c0-4.418 3.582-7 8-7s8 2.582 8 7" fill="currentColor"/></svg>
+              </div>
+              <div><strong>Early access member</strong><span>Product, Binh Thanh</span></div>
+            </div>
+          </div>
+          <div class="testi-slide glass">
+            <p class="testi-quote">"The Second Chance round on Thursday has saved my week more than once."</p>
+            <div class="testi-who">
+              <!-- placeholder: real headshot photo of this founding member -->
+              <div class="testi-avatar" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="4" fill="currentColor"/><path d="M4 20c0-4.418 3.582-7 8-7s8 2.582 8 7" fill="currentColor"/></svg>
+              </div>
+              <div><strong>Early access member</strong><span>Legal, District 7</span></div>
+            </div>
+          </div>
+          <div class="testi-slide glass">
+            <p class="testi-quote">"A Room got me out to badminton with people I'd never have matched with otherwise. One of them turned into a real date later."</p>
+            <div class="testi-who">
+              <!-- placeholder: real headshot photo of this founding member -->
+              <div class="testi-avatar" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="4" fill="currentColor"/><path d="M4 20c0-4.418 3.582-7 8-7s8 2.582 8 7" fill="currentColor"/></svg>
+              </div>
+              <div><strong>Early access member</strong><span>Operations, District 1</span></div>
+            </div>
+          </div>
+          <div class="testi-slide glass">
+            <p class="testi-quote">"'See Again?' took the guessing out of the morning after. No more wondering if I should text first."</p>
+            <div class="testi-who">
+              <!-- placeholder: real headshot photo of this founding member -->
+              <div class="testi-avatar" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="4" fill="currentColor"/><path d="M4 20c0-4.418 3.582-7 8-7s8 2.582 8 7" fill="currentColor"/></svg>
+              </div>
+              <div><strong>Early access member</strong><span>Design, Thao Dien</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testi-controls">
+          <button type="button" class="testi-arrow" id="testiPrev" aria-label="Previous testimonial">‹</button>
+          <div class="testi-dots" id="testiDots" role="tablist" aria-label="Testimonial slides">
+            <button type="button" class="testi-dot is-active" data-index="0" aria-label="Go to slide 1"></button>
+            <button type="button" class="testi-dot" data-index="1" aria-label="Go to slide 2"></button>
+            <button type="button" class="testi-dot" data-index="2" aria-label="Go to slide 3"></button>
+            <button type="button" class="testi-dot" data-index="3" aria-label="Go to slide 4"></button>
+            <button type="button" class="testi-dot" data-index="4" aria-label="Go to slide 5"></button>
+            <button type="button" class="testi-dot" data-index="5" aria-label="Go to slide 6"></button>
+            <button type="button" class="testi-dot" data-index="6" aria-label="Go to slide 7"></button>
+            <button type="button" class="testi-dot" data-index="7" aria-label="Go to slide 8"></button>
+          </div>
+          <button type="button" class="testi-arrow" id="testiNext" aria-label="Next testimonial">›</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       7. WAITLIST / SIGNUP
+  ========================================================================== -->
+  <section class="waitlist section-alt" id="waitlist">
+    <div class="container">
+      <div class="waitlist__panel glass glass--navy reveal">
+        <div class="blob blob--a" aria-hidden="true" data-parallax="0.04"></div>
+        <div class="blob blob--b" aria-hidden="true" data-parallax="0.07"></div>
+
+        <h2>Be part of the first 500.</h2>
+        <p class="waitlist__sub">Founding members get early access, priority curation, and a say in how IRL launches in Saigon.</p>
+
+        <form class="waitlist-form" id="waitlistForm" novalidate>
+          <label for="waitlistEmail" class="visually-hidden">Email address</label>
+          <input
+            type="email"
+            id="waitlistEmail"
+            name="email"
+            placeholder="you@company.com"
+            autocomplete="email"
+            required
+            aria-describedby="waitlistError"
+          >
+          <button type="submit" class="btn btn--primary" id="waitlistSubmit">Join the Waitlist</button>
+        </form>
+        <p class="waitlist__error" id="waitlistError" role="alert"></p>
+
+        <div class="waitlist__success" id="waitlistSuccess" role="status">
+          <strong>You're on the list. 🎉</strong>
+          <span>We'll email you the moment IRL opens up in Saigon.</span>
+        </div>
+
+        <p class="waitlist__reassurance">No spam. Just an invite when we launch in Saigon.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       8. FAQ
+  ========================================================================== -->
+  <section class="faq" id="faq">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow eyebrow--center">FAQ</span>
+        <h2>Questions, answered</h2>
+      </div>
+
+      <div class="faq__list reveal">
+        <details class="faq__item glass">
+          <summary>Is this just another dating app?</summary>
+          <p>Not really. Most apps optimize for how long you stay in the app. IRL optimizes for how quickly you get to a real date — with a weekly rhythm and reviewed profiles instead of endless swiping.</p>
+        </details>
+        <details class="faq__item glass">
+          <summary>How is this different from Tinder or Bumble?</summary>
+          <p>Those apps give you unlimited matches and leave the rest to you. IRL gives you a small number of curated, reviewed introductions each week and structures the path from "matched" to "met in person" — including a private way to signal interest after the date.</p>
+        </details>
+        <details class="faq__item glass">
+          <summary>Where does IRL launch first?</summary>
+          <p>Ho Chi Minh City. We're building the founding cohort here first, starting with people already active in the city's professional and sports communities.</p>
+        </details>
+        <details class="faq__item glass">
+          <summary>Do I need to pay?</summary>
+          <p>Joining the waitlist is free, and founding members get free early access. We'll always be upfront before anything ever requires payment.</p>
+        </details>
+        <details class="faq__item glass">
+          <summary>What if I don't click with my introductions?</summary>
+          <p>That's what Thursday's Second Chance round is for — a fresh set of introductions before the week is over, so one quiet week doesn't mean an empty weekend.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ==========================================================================
+     FOOTER
+========================================================================== -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer__top">
+      <div>
+        <p class="footer__brand-logo">IRL</p>
+        <p class="footer__tagline">Dating for people with full lives. Launching in Ho Chi Minh City.</p>
+      </div>
+
+      <!-- placeholder: swap hrefs for real social profiles once created -->
+      <div class="footer__social">
+        <a href="#" aria-label="IRL on LinkedIn">in</a>
+        <a href="#" aria-label="IRL on Facebook">FB</a>
+        <a href="#" aria-label="IRL on Instagram">IG</a>
+      </div>
+    </div>
+
+    <div class="footer__bottom">
+      <p>&copy; <span id="year"></span> IRL. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- Behavior lives in script.js, next to this file -->
+<script src="script.js"></script>
+</body>
+</html>

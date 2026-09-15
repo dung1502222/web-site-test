@@ -151,55 +151,34 @@
         <p>One rhythm, every week — designed to end in a real date, not a longer chat thread.</p>
       </div>
 
-      <!-- Seven phases, each its own full-width row: the weekly operating
-           system runs Monday through the weekend and into "After," rather
-           than compressing Mon–Thu into a single generic block. -->
+      <!-- Four phases, each its own full-width row: the whole "getting
+           matched" week (Mon–Thu) is summarized in one card, then Friday /
+           Weekend / After each get their own card below it. -->
       <div class="timeline">
         <div class="timeline__step reveal">
           <div class="timeline__content glass glass--navy">
-            <span class="timeline__day">Monday — Intention</span>
-            <p class="timeline__title">Set your intention</p>
-            <p class="timeline__desc">Tell IRL what you're looking for this week so your introductions fit your week, not just your type.</p>
+            <span class="timeline__day">Monday – Thursday</span>
+            <p class="timeline__title">Set your intention, meet your introductions</p>
+            <p class="timeline__desc">Tell IRL what you're looking for, then meet a handful of reviewed profiles — chosen with intention, not swiped through by the hundred. If you're both curious, a short window opens to get comfortable, and if nothing clicks by Thursday, a fresh Second Chance round goes out before the week is over.</p>
           </div>
         </div>
         <div class="timeline__step reveal reveal--delay-1">
           <div class="timeline__content glass glass--navy">
-            <span class="timeline__day">Tuesday — Introductions</span>
-            <p class="timeline__title">Meet your introductions</p>
-            <p class="timeline__desc">A handful of reviewed profiles, chosen with intention. Say if you'd be up for meeting, or pass — no swiping through hundreds.</p>
-          </div>
-        </div>
-        <div class="timeline__step reveal reveal--delay-2">
-          <div class="timeline__content glass glass--navy">
-            <span class="timeline__day">Wednesday — Get comfortable</span>
-            <p class="timeline__title">A short window to get comfortable</p>
-            <p class="timeline__desc">If you're both curious, a short chat window opens — enough time to feel ready to meet, not enough to stall out.</p>
-          </div>
-        </div>
-        <div class="timeline__step reveal reveal--delay-3">
-          <div class="timeline__content glass glass--navy">
-            <span class="timeline__day">Thursday — Second Chance</span>
-            <p class="timeline__title">A second chance, if you need it</p>
-            <p class="timeline__desc">Nothing clicked yet? A fresh round of introductions goes out before the week is over, so one quiet week doesn't mean an empty weekend.</p>
-          </div>
-        </div>
-        <div class="timeline__step reveal">
-          <div class="timeline__content glass glass--navy">
-            <span class="timeline__day">Friday — Make a plan</span>
+            <span class="timeline__day">Friday</span>
             <p class="timeline__title">Commit to a real plan</p>
             <p class="timeline__desc">Lock in a time. Figure out the place together. No more "we should hang out sometime."</p>
           </div>
         </div>
-        <div class="timeline__step timeline__step--weekend reveal reveal--delay-1">
+        <div class="timeline__step timeline__step--weekend reveal reveal--delay-2">
           <div class="timeline__content glass">
-            <span class="timeline__day">Weekend — Meet</span>
+            <span class="timeline__day">Weekend</span>
             <p class="timeline__title">Meet in person</p>
             <p class="timeline__desc">The whole point. An actual date, at an actual place, in your actual city.</p>
           </div>
         </div>
-        <div class="timeline__step reveal reveal--delay-2">
+        <div class="timeline__step reveal reveal--delay-3">
           <div class="timeline__content glass glass--navy">
-            <span class="timeline__day">After — See Again</span>
+            <span class="timeline__day">After</span>
             <p class="timeline__title">Answer "See Again?"</p>
             <p class="timeline__desc">A private, low-pressure signal after the date — less guessing, a clearer sense of where things stand. If you both say yes, IRL helps you make the next plan.</p>
           </div>
@@ -306,11 +285,11 @@
     </div>
 
     <!-- ======================================================================
-         ROOMS — an interactive swipe-deck demo. "Not this time" drops the
-         top card away to reveal the next Room underneath; "I'm interested"
-         flashes a joined badge, then the card lifts off the same way. Purely
-         illustrative — see the "ROOMS SWIPE DECK" section in script.js. No
-         real signups happen here.
+         ROOMS — cards spread out like a fanned hand rather than a swipe
+         stack, each responding independently: "Not this time" fades that
+         card out; "I'm interested" flashes a joined badge in place. Purely
+         illustrative — see the "ROOMS" section in script.js. No real
+         signups happen here.
     ====================================================================== -->
     <div class="container">
       <div class="rooms reveal reveal--delay-3">
@@ -386,7 +365,7 @@
 
       <div class="reveal" style="max-width:480px;margin:0 auto 32px;text-align:center;">
         <span class="eyebrow eyebrow--center">What we're hearing</span>
-        <p style="margin-top:12px;color:var(--muted);font-size:calc(16px * var(--text-scale));">From conversations with young professionals in Saigon.</p>
+        <p style="margin-top:12px;color:rgba(255,255,255,0.85);font-size:calc(16px * var(--text-scale));">From conversations with young professionals in Saigon.</p>
       </div>
 
       <!-- Testimonial swiper: a native scroll-snap track (swipeable by touch

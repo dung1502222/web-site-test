@@ -360,13 +360,13 @@
   }
 
   /* --------------------------------------------------------------------
-     9. ROOMS SWIPE DECK
-     A stack of Room cards (see .room-card in index.html). "Not this time"
-     drops the top card away and reveals the next one underneath; "I'm
-     interested" briefly flashes a "You're in" badge on the card before it
-     lifts off the same way. Once the deck runs out, an empty state offers
-     to reshuffle back to the start. Nothing here is submitted anywhere —
-     it's illustrating the product's own Rooms feature.
+     9. ROOMS — spread cards
+     Room cards (see .room-card in index.html) are laid out side by side
+     rather than stacked, so each one responds independently: "Not this
+     time" fades that card out; "I'm interested" flashes a "You're in"
+     badge and leaves it in place. Once every card has been passed on, an
+     empty state offers to bring them all back. Nothing here is submitted
+     anywhere — it's illustrating the product's own Rooms feature.
   -------------------------------------------------------------------- */
   var roomsStack = document.getElementById('roomsStack');
 
@@ -374,60 +374,40 @@
     var roomCards = Array.prototype.slice.call(roomsStack.querySelectorAll('.room-card'));
     var roomsEmpty = document.getElementById('roomsEmpty');
     var roomsReset = document.getElementById('roomsReset');
-    var roomQueue = roomCards.slice();
 
-    // Re-assign each remaining card's position in the stack (0 = on top);
-    // .room-card's CSS reads --stack to offset/scale/fade cards behind it.
-    function layoutRoomStack() {
-      roomQueue.forEach(function (card, i) {
-        card.style.setProperty('--stack', i);
-        card.classList.toggle('is-top', i === 0);
-      });
-      if (roomsEmpty) roomsEmpty.hidden = roomQueue.length > 0;
-    }
-
-    function removeTopCard(card, delay) {
-      setTimeout(function () {
-        roomQueue.shift();
-        card.hidden = true;
-        card.classList.remove('is-leaving-pass', 'is-leaving-join', 'is-joined');
-        layoutRoomStack();
-      }, delay);
-    }
-
-    function actOnTopCard(action) {
-      if (!roomQueue.length) return;
-      var card = roomQueue[0];
-      if (action === 'join') {
-        card.classList.add('is-joined');
-        setTimeout(function () { card.classList.add('is-leaving-join'); }, 550);
-        removeTopCard(card, 550 + 420); // let the badge show, then fly off
-      } else if (action === 'pass') {
-        card.classList.add('is-leaving-pass');
-        removeTopCard(card, 420);
-      }
+    function updateRoomsEmptyState() {
+      var anyVisible = roomCards.some(function (card) { return !card.hidden; });
+      if (roomsEmpty) roomsEmpty.hidden = anyVisible;
     }
 
     roomsStack.addEventListener('click', function (e) {
       var btn = e.target.closest('[data-room-action]');
       if (!btn) return;
       var card = btn.closest('.room-card');
-      if (card !== roomQueue[0]) return; // ignore clicks on cards further back
-      actOnTopCard(btn.getAttribute('data-room-action'));
+      var action = btn.getAttribute('data-room-action');
+
+      if (action === 'join') {
+        card.classList.add('is-joined');
+      } else if (action === 'pass') {
+        card.classList.add('is-leaving-pass');
+        setTimeout(function () {
+          card.hidden = true;
+          updateRoomsEmptyState();
+        }, 380);
+      }
     });
 
     if (roomsReset) {
       roomsReset.addEventListener('click', function () {
         roomCards.forEach(function (card) {
           card.hidden = false;
-          card.classList.remove('is-leaving-pass', 'is-leaving-join', 'is-joined');
+          card.classList.remove('is-leaving-pass', 'is-joined');
         });
-        roomQueue = roomCards.slice();
-        layoutRoomStack();
+        updateRoomsEmptyState();
       });
     }
 
-    layoutRoomStack();
+    updateRoomsEmptyState();
   }
 
   /* --------------------------------------------------------------------

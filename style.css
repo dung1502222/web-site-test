@@ -2,27 +2,27 @@
    0. DESIGN TOKENS — edit these to reskin the whole page.
 ====================================================================== */
 :root{
-  /* --- core palette: ~70% white / 30% navy, per brief --- */
-  --navy-950:#060f26;
-  --navy-900:#0a1a3c;   /* primary deep navy */
-  --navy-700:#132752;
-  --navy-500:#24407f;
+  /* --- core palette: orange primary + background, white secondary --- */
+  --navy-950:#260c00;   /* darkest rust-brown — deepest shadow/gradient stop */
+  --navy-900:#4a1c00;   /* dark rust-brown — "ink"/dark-surface role */
+  --navy-700:#7a2c00;
+  --navy-500:#a34200;
   --white:#ffffff;
-  --off-white:#f5f7fb;
-  --section-alt:#edf1f9;  /* faint navy-tinted band, alternated between sections so each one reads as its own block */
-  --ink:#0a1a3c;        /* body/heading text on light bg */
-  --muted:#525c78;      /* secondary text on light bg */
-  --muted-on-navy:#b9c2dd;
+  --off-white:#ff8f4d;   /* orange page/section background (default) */
+  --section-alt:#f2650a;  /* deeper orange band, alternated between sections so each one reads as its own block */
+  --ink:#4a1c00;        /* dark text used inside white/light cards */
+  --muted:#7a6153;      /* secondary text inside white/light cards */
+  --muted-on-navy:#e7c3a3;
 
-  /* --- accents: coral for calls-to-action, teal for glow/energy --- */
+  /* --- accents: orange for calls-to-action, teal for glow/energy --- */
   --accent:#ff6a00;      /* signature brand orange — the color IRL should be recognized by */
   --accent-dark:#d95a00;
   --glow:#3fd0c9;
 
   /* --- glass surfaces --- */
-  --glass-light-bg:rgba(255,255,255,0.55);
-  --glass-light-border:rgba(255,255,255,0.7);
-  --glass-navy-bg:rgba(10,26,60,0.60);
+  --glass-light-bg:rgba(255,255,255,0.85);
+  --glass-light-border:rgba(255,255,255,0.9);
+  --glass-navy-bg:rgba(74,28,0,0.60);
   --glass-navy-border:rgba(255,255,255,0.14);
 
   /* --- geometry --- */
@@ -50,7 +50,7 @@ body{
   margin:0;
   font-family:'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
   background:var(--off-white);
-  color:var(--ink);
+  color:#fff;
   line-height:1.5;
   -webkit-font-smoothing:antialiased;
   zoom:1; /* default: original sizing everywhere — enlarged only on large screens below */
@@ -110,16 +110,16 @@ input{font:inherit;}
   -webkit-backdrop-filter:blur(18px) saturate(160%);
   border:1px solid var(--glass-light-border);
   border-radius:var(--radius-lg);
-  box-shadow:0 8px 32px rgba(10,26,60,0.10), inset 0 1px 0 rgba(255,255,255,0.6);
+  box-shadow:0 8px 32px rgba(74,28,0,0.10), inset 0 1px 0 rgba(255,255,255,0.6);
 }
 .glass--navy{
   background:var(--glass-navy-bg);
   border:1px solid var(--glass-navy-border);
   color:#fff;
-  box-shadow:0 20px 60px rgba(6,15,38,0.45), 0 0 0 1px rgba(63,208,201,0.12), inset 0 1px 0 rgba(255,255,255,0.08);
+  box-shadow:0 20px 60px rgba(38,12,0,0.45), 0 0 0 1px rgba(63,208,201,0.12), inset 0 1px 0 rgba(255,255,255,0.08);
 }
 .glass--glow{
-  box-shadow:0 8px 32px rgba(10,26,60,0.10), 0 0 0 1px rgba(63,208,201,0.25), 0 0 32px rgba(63,208,201,0.12), inset 0 1px 0 rgba(255,255,255,0.6);
+  box-shadow:0 8px 32px rgba(74,28,0,0.10), 0 0 0 1px rgba(63,208,201,0.25), 0 0 32px rgba(63,208,201,0.12), inset 0 1px 0 rgba(255,255,255,0.6);
 }
 
 /* floating liquid-navy blobs used behind glass panels for depth/energy */
@@ -165,11 +165,11 @@ input{font:inherit;}
 .btn--primary:active{transform:translateY(-1px);}
 
 .btn--ghost{
-  background:rgba(10,26,60,0.06);
+  background:rgba(74,28,0,0.06);
   color:var(--navy-900);
-  border:1px solid rgba(10,26,60,0.14);
+  border:1px solid rgba(74,28,0,0.14);
 }
-.btn--ghost:hover{background:rgba(10,26,60,0.1);transform:translateY(-2px);}
+.btn--ghost:hover{background:rgba(74,28,0,0.1);transform:translateY(-2px);}
 
 .btn--on-navy{
   background:rgba(255,255,255,0.1);
@@ -192,10 +192,10 @@ input{font:inherit;}
   background:rgba(245,247,251,0.7);
   backdrop-filter:blur(14px);
   -webkit-backdrop-filter:blur(14px);
-  border-bottom:1px solid rgba(10,26,60,0.06);
+  border-bottom:1px solid rgba(74,28,0,0.06);
   transition:box-shadow .3s ease, background .3s ease;
 }
-.nav.is-scrolled{box-shadow:0 8px 24px rgba(10,26,60,0.08);}
+.nav.is-scrolled{box-shadow:0 8px 24px rgba(74,28,0,0.08);}
 .nav__inner{display:flex;align-items:center;justify-content:space-between;gap:20px;}
 .nav__logo{
   display:inline-flex;align-items:baseline;gap:3px;
@@ -242,7 +242,7 @@ input{font:inherit;}
     backdrop-filter:blur(20px);
     border:1px solid rgba(255,255,255,0.7);
     border-radius:var(--radius-md);
-    box-shadow:0 20px 50px rgba(10,26,60,0.18);
+    box-shadow:0 20px 50px rgba(74,28,0,0.18);
     transform:translateY(-12px);
     opacity:0;
     visibility:hidden;
@@ -253,7 +253,7 @@ input{font:inherit;}
     transform:translateY(0);opacity:1;visibility:visible;pointer-events:auto;
   }
   .nav__links a{padding:12px 14px;border-radius:10px;}
-  .nav__links a:hover{background:rgba(10,26,60,0.05);}
+  .nav__links a:hover{background:rgba(74,28,0,0.05);}
   .nav__links .btn--primary{display:inline-flex;margin-top:8px;} /* show the CTA inside the mobile dropdown */
   .nav__toggle{display:flex;}
   .nav__actions .btn--small{display:none;} /* desktop CTA hidden — mobile uses the one above instead */
@@ -292,7 +292,7 @@ input{font:inherit;}
   border:1px solid rgba(255,106,0,0.45);
   padding:12px 24px;border-radius:100px;
   margin-bottom:20px;
-  box-shadow:0 10px 26px rgba(10,26,60,0.28), 0 0 0 1px rgba(255,106,0,0.14), inset 0 1px 0 rgba(255,255,255,0.12);
+  box-shadow:0 10px 26px rgba(74,28,0,0.28), 0 0 0 1px rgba(255,106,0,0.14), inset 0 1px 0 rgba(255,255,255,0.12);
 }
 .eyebrow::before{
   content:"";width:8px;height:8px;flex-shrink:0;border-radius:50%;
@@ -304,21 +304,30 @@ input{font:inherit;}
   line-height:1.04;
   font-weight:900;
   letter-spacing:-.03em;
-  color:var(--navy-900);
+  color:#fff;
 }
 .hero__subhead{
   margin-top:22px;
   font-size:clamp(calc(16px * var(--text-scale)), 1.6vw, calc(19px * var(--text-scale)));
-  color:var(--muted);
+  color:rgba(255,255,255,0.88);
   max-width:520px;
 }
 .hero__ctas{
   display:flex;flex-wrap:wrap;gap:14px;
   margin-top:34px;
 }
+/* the ghost CTA sits directly on the hero's orange background, not a white
+   card, so it needs the light/on-color treatment instead of .btn--ghost's
+   default dark-on-light styling */
+.hero__ctas .btn--ghost{
+  background:rgba(255,255,255,0.14);
+  color:#fff;
+  border:1px solid rgba(255,255,255,0.4);
+}
+.hero__ctas .btn--ghost:hover{background:rgba(255,255,255,0.22);}
 .hero__microcopy{
   margin-top:18px;
-  font-size:calc(13px * var(--text-scale));color:var(--muted);font-weight:600;
+  font-size:calc(13px * var(--text-scale));color:rgba(255,255,255,0.75);font-weight:600;
 }
 
 /* hero visual: a single glass "app" card, right-aligned, sitting in normal
@@ -337,7 +346,12 @@ input{font:inherit;}
   overflow:hidden;
 }
 .hero__card-label{font-size:calc(14px * var(--text-scale));font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--glow);}
-.hero__card-title{font-size:calc(28px * var(--text-scale));font-weight:800;margin-top:10px;}
+.hero__card-title{
+  font-size:calc(28px * var(--text-scale));font-weight:800;margin-top:10px;
+  /* reserves one line's height so switching between demo samples never
+     shifts the card's height, even when a plan's text is shorter */
+  min-height:calc(28px * var(--text-scale) * 1.3);
+}
 
 /* --- hero__card--main: a single sample "match" card --- */
 .hero__match-photo{
@@ -355,7 +369,7 @@ input{font:inherit;}
 .hero__match-photo::after{
   content:"";
   position:absolute;inset:auto 0 0;height:55%;
-  background:linear-gradient(to top, rgba(6,15,38,0.85), transparent);
+  background:linear-gradient(to top, rgba(38,12,0,0.85), transparent);
 }
 .hero__match-badge{
   position:absolute;top:14px;right:14px;z-index:2;
@@ -373,6 +387,9 @@ input{font:inherit;}
 .hero__card-quote{
   font-size:calc(16px * var(--text-scale));font-style:italic;color:var(--muted-on-navy);
   margin-top:12px;line-height:1.55;
+  /* reserves two lines' height so a one-line quote doesn't shrink the card
+     when cycling between demo samples */
+  min-height:calc(16px * var(--text-scale) * 1.55 * 2);
 }
 
 /* the hero__card--main demo: "Not this week" / "I'd be up for this" */
@@ -433,12 +450,12 @@ section{position:relative;padding:56px 0;}
   font-size:clamp(calc(28px * var(--text-scale)), 3.6vw, calc(48px * var(--text-scale)));
   font-weight:900;
   letter-spacing:-.02em;
-  color:var(--navy-900);
+  color:#fff;
 }
 .section-head p{
   margin-top:16px;
   font-size:calc(18px * var(--text-scale));
-  color:var(--muted);
+  color:rgba(255,255,255,0.85);
 }
 .eyebrow--center{margin-left:auto;margin-right:auto;display:table;}
 
@@ -488,7 +505,7 @@ section:not(.hero){border-top:1px solid var(--navy-900);}
   font-size:clamp(calc(21px * var(--text-scale)), 2.6vw, calc(30px * var(--text-scale)));
   font-weight:700;
   line-height:1.4;
-  color:var(--navy-900);
+  color:#fff;
   letter-spacing:-.01em;
 }
 @media (max-width:720px){
@@ -543,19 +560,19 @@ section:not(.hero){border-top:1px solid var(--navy-900);}
   display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;
 }
 .chat-demo__copy h2{
-  font-size:clamp(calc(28px * var(--text-scale)), 3.6vw, calc(42px * var(--text-scale)));font-weight:900;color:var(--navy-900);
+  font-size:clamp(calc(28px * var(--text-scale)), 3.6vw, calc(42px * var(--text-scale)));font-weight:900;color:#fff;
   letter-spacing:-.02em;margin-top:8px;
 }
-.chat-demo__copy p{margin-top:18px;font-size:calc(16.5px * var(--text-scale));color:var(--muted);max-width:480px;}
+.chat-demo__copy p{margin-top:18px;font-size:calc(16.5px * var(--text-scale));color:rgba(255,255,255,0.85);max-width:480px;}
 .chat-demo__copy .chat-demo__note{
   border-left:3px solid var(--accent);padding-left:16px;
-  color:var(--navy-900);font-weight:600;
+  color:#fff;font-weight:600;
 }
 
 .chat-demo__mock{padding:28px;}
 .chat-demo__head{
   display:flex;justify-content:space-between;align-items:center;gap:12px;
-  padding-bottom:16px;border-bottom:1px solid rgba(10,26,60,0.1);
+  padding-bottom:16px;border-bottom:1px solid rgba(74,28,0,0.1);
 }
 .chat-demo__head strong{font-size:calc(15px * var(--text-scale));color:var(--navy-900);display:block;}
 .chat-demo__head span{font-size:calc(13px * var(--text-scale));color:var(--muted);}
@@ -567,10 +584,10 @@ section:not(.hero){border-top:1px solid var(--navy-900);}
   max-width:75%;border-radius:16px;padding:10px 15px;margin:12px 0 0;
   font-size:calc(14.5px * var(--text-scale));
 }
-.chat-demo__bubble--them{background:rgba(10,26,60,0.06);color:var(--ink);}
+.chat-demo__bubble--them{background:rgba(74,28,0,0.06);color:var(--ink);}
 .chat-demo__bubble--me{background:var(--navy-900);color:#fff;margin-left:auto;}
 .chat-demo__timecard{
-  border:1px solid rgba(10,26,60,0.12);border-radius:14px;
+  border:1px solid rgba(74,28,0,0.12);border-radius:14px;
   padding:16px;margin-top:18px;background:#fff;
 }
 .chat-demo__timecard strong{font-size:calc(14.5px * var(--text-scale));color:var(--navy-900);}
@@ -624,8 +641,8 @@ section:not(.hero){border-top:1px solid var(--navy-900);}
      it looking balanced regardless of how each column's height compares. */
   align-items:start;
 }
-.who h2{font-size:clamp(calc(28px * var(--text-scale)), 3.6vw, calc(46px * var(--text-scale)));font-weight:900;color:var(--navy-900);letter-spacing:-.02em;}
-.who p{margin-top:20px;font-size:calc(17.5px * var(--text-scale));color:var(--muted);max-width:540px;}
+.who h2{font-size:clamp(calc(28px * var(--text-scale)), 3.6vw, calc(46px * var(--text-scale)));font-weight:900;color:#fff;letter-spacing:-.02em;}
+.who p{margin-top:20px;font-size:calc(17.5px * var(--text-scale));color:rgba(255,255,255,0.85);max-width:540px;}
 
 /* lifestyle photo collage: a clean, even 2x2 grid — deliberately no
    overlapping offsets between cells, so nothing bleeds into its neighbor */
@@ -649,10 +666,10 @@ section:not(.hero){border-top:1px solid var(--navy-900);}
    over a real photo, hotlinked from Unsplash (free license, no attribution
    required — https://unsplash.com/license). Swap the url(...) for your own
    photography whenever it's ready; keep the gradient in front of it. */
-.who__collage .c1{background-image:linear-gradient(180deg, rgba(10,26,60,0) 45%, rgba(6,15,38,0.75) 100%), url("https://images.unsplash.com/photo-1731789247154-f0461bfaf269?auto=format&fit=crop&w=800&q=70"); /* rooftop coworking terrace at golden hour */}
-.who__collage .c2{background-image:linear-gradient(180deg, rgba(10,26,60,0) 45%, rgba(6,15,38,0.75) 100%), url("https://images.unsplash.com/photo-1626224583764-f87db24ac4ea?auto=format&fit=crop&w=800&q=70"); /* badminton player mid-rally on an indoor court */}
-.who__collage .c3{background-image:linear-gradient(180deg, rgba(10,26,60,0) 45%, rgba(6,15,38,0.75) 100%), url("https://images.unsplash.com/photo-1604881990409-b9f246db39da?auto=format&fit=crop&w=800&q=70"); /* couple sharing a dinner date */}
-.who__collage .c4{background-image:linear-gradient(180deg, rgba(10,26,60,0) 45%, rgba(6,15,38,0.75) 100%), url("https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=800&q=70"); /* early-morning gym session */}
+.who__collage .c1{background-image:linear-gradient(180deg, rgba(74,28,0,0) 45%, rgba(38,12,0,0.75) 100%), url("https://images.unsplash.com/photo-1731789247154-f0461bfaf269?auto=format&fit=crop&w=800&q=70"); /* rooftop coworking terrace at golden hour */}
+.who__collage .c2{background-image:linear-gradient(180deg, rgba(74,28,0,0) 45%, rgba(38,12,0,0.75) 100%), url("https://images.unsplash.com/photo-1626224583764-f87db24ac4ea?auto=format&fit=crop&w=800&q=70"); /* badminton player mid-rally on an indoor court */}
+.who__collage .c3{background-image:linear-gradient(180deg, rgba(74,28,0,0) 45%, rgba(38,12,0,0.75) 100%), url("https://images.unsplash.com/photo-1604881990409-b9f246db39da?auto=format&fit=crop&w=800&q=70"); /* couple sharing a dinner date */}
+.who__collage .c4{background-image:linear-gradient(180deg, rgba(74,28,0,0) 45%, rgba(38,12,0,0.75) 100%), url("https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=800&q=70"); /* early-morning gym session */}
 
 @media (max-width:900px){
   .who__inner{grid-template-columns:1fr;}
@@ -664,50 +681,53 @@ section:not(.hero){border-top:1px solid var(--navy-900);}
    flashes a joined badge first) — see script.js for the interaction. --- */
 .rooms{
   margin-top:64px;padding-top:48px;
-  border-top:1px solid rgba(10,26,60,0.08);
+  border-top:1px solid rgba(74,28,0,0.08);
 }
 .rooms__head{max-width:520px;margin:0 auto;text-align:center;}
 .rooms__head h3{
   font-size:clamp(calc(22px * var(--text-scale)), 2.6vw, calc(30px * var(--text-scale)));
-  font-weight:800;color:var(--navy-900);letter-spacing:-.01em;
+  font-weight:800;color:#fff;letter-spacing:-.01em;
 }
-.rooms__head p{margin-top:12px;font-size:calc(16px * var(--text-scale));color:var(--muted);}
+.rooms__head p{margin-top:12px;font-size:calc(16px * var(--text-scale));color:rgba(255,255,255,0.85);}
 
 .rooms-stack{
-  position:relative;
-  /* leaves ~100px of room on the right (see .room-card's translate) for
-     the fanned-out cards behind the top one, so they never spill past the
-     edge of the viewport even on a narrow screen */
-  width:min(360px, calc(100% - 100px));
-  height:460px;
-  margin:40px 100px 0 auto;
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  align-items:flex-start;
+  gap:36px;
+  width:100%;
+  max-width:760px;
+  margin:48px auto 0;
 }
 
 .room-card{
-  position:absolute;inset:0;
+  position:relative;
+  width:min(300px, 100%);
   display:flex;flex-direction:column;
   border-radius:var(--radius-lg);
   overflow:hidden;
-  /* nearly solid (not the usual translucent glass-navy) so a card behind
-     never shows its own text bleeding through the one in front */
-  background:rgba(10,26,60,0.96);
+  background:rgba(74,28,0,0.96);
   backdrop-filter:blur(18px) saturate(160%);
   -webkit-backdrop-filter:blur(18px) saturate(160%);
   border:1px solid var(--glass-navy-border);
-  box-shadow:0 20px 50px rgba(6,15,38,0.35);
-  /* stacking position: JS sets --stack to each card's place in the queue
-     (0 = on top). Cards further back fan out to the right and down, and
-     shrink/fade slightly, so only a sliver of each peeks out from behind —
-     never enough overlap for two cards' text to sit in the same spot. */
-  transform:translate(calc(var(--stack, 0) * 22px), calc(var(--stack, 0) * 16px)) scale(calc(1 - var(--stack, 0) * 0.06));
-  opacity:calc(1 - var(--stack, 0) * 0.16);
-  z-index:calc(20 - var(--stack, 0));
-  transition:transform .4s var(--ease), opacity .35s var(--ease);
+  box-shadow:0 20px 50px rgba(38,12,0,0.35);
+  /* spread the cards out like a fanned hand rather than stacking them —
+     each one tilted a couple of degrees, alternating direction, and
+     straightening/lifting on hover */
+  transform:rotate(var(--fan-rotate, 0deg));
+  transition:transform .35s var(--ease), opacity .35s var(--ease), box-shadow .35s var(--ease);
 }
-.room-card:not(.is-top){pointer-events:none;} /* only the top card responds to clicks */
+.room-card:nth-child(odd){--fan-rotate:-4deg;}
+.room-card:nth-child(even){--fan-rotate:4deg;margin-top:22px;}
+.room-card:hover{transform:rotate(0deg) translateY(-8px);box-shadow:0 28px 60px rgba(38,12,0,0.4);z-index:1;}
 
-.room-card.is-leaving-pass{transform:translate(-30px, 140px) rotate(-8deg);opacity:0;}
-.room-card.is-leaving-join{transform:translateY(-50px) scale(1.04);opacity:0;}
+.room-card.is-leaving-pass{transform:translate(-20px, 40px) rotate(-8deg);opacity:0;}
+.room-card.is-joined .room-card__actions{display:none;}
+
+@media (max-width:520px){
+  .room-card:nth-child(even){margin-top:0;}
+}
 
 .room-card__visual{
   height:42%;flex-shrink:0;
@@ -742,9 +762,9 @@ section:not(.hero){border-top:1px solid var(--navy-900);}
 .room-card.is-joined .room-card__joined-badge{opacity:1;transform:scale(1);}
 
 .rooms-stack__empty{
-  position:absolute;inset:0;
   display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;
   text-align:center;padding:32px;
+  width:min(300px, 100%);
   border-radius:var(--radius-lg);
   background:var(--glass-light-bg);
   border:1px solid var(--glass-light-border);
@@ -752,10 +772,8 @@ section:not(.hero){border-top:1px solid var(--navy-900);}
 .rooms-stack__empty p{color:var(--muted);font-size:calc(15px * var(--text-scale));max-width:260px;}
 
 @media (max-width:520px){
-  /* a narrower fan-out gutter so the card itself still gets most of a
-     small screen's width, rather than losing 100px of it to the fan */
-  .rooms-stack{width:min(300px, calc(100% - 56px));height:420px;margin:32px 56px 0 auto;}
-  .room-card{transform:translate(calc(var(--stack, 0) * 12px), calc(var(--stack, 0) * 9px)) scale(calc(1 - var(--stack, 0) * 0.06));}
+  .room-card:nth-child(odd),
+  .room-card:nth-child(even){--fan-rotate:0deg;margin-top:0;} /* flat stack, no fan, on narrow screens */
   .room-card__body{padding:18px 20px 4px;}
   .room-card__actions{padding:14px 20px 18px;}
 }
@@ -771,9 +789,9 @@ section:not(.hero){border-top:1px solid var(--navy-900);}
 .proof__logo{
   width:180px;height:68px;border-radius:var(--radius-sm);
   display:flex;align-items:center;justify-content:center;
-  font-size:calc(14.5px * var(--text-scale));font-weight:700;color:var(--muted);
-  background:rgba(10,26,60,0.05);
-  border:1px dashed rgba(10,26,60,0.18);
+  font-size:calc(14.5px * var(--text-scale));font-weight:700;color:rgba(255,255,255,0.85);
+  background:rgba(255,255,255,0.15);
+  border:1px dashed rgba(255,255,255,0.4);
 }
 /* --- testimonial swiper: native scroll-snap track + prev/next + dots,
    driven by script.js (see "TESTIMONIAL SWIPER" section there) --- */
@@ -823,23 +841,23 @@ section:not(.hero){border-top:1px solid var(--navy-900);}
 .testi-arrow{
   width:44px;height:44px;border-radius:50%;flex-shrink:0;
   display:flex;align-items:center;justify-content:center;
-  background:rgba(10,26,60,0.06);
-  border:1px solid rgba(10,26,60,0.14);
+  background:rgba(255,255,255,0.8);
+  border:1px solid rgba(255,255,255,0.9);
   font-size:calc(20px * var(--text-scale));line-height:1;color:var(--navy-900);
   transition:background .2s ease, transform .2s ease;
 }
-.testi-arrow:hover{background:rgba(10,26,60,0.12);transform:translateY(-2px);}
+.testi-arrow:hover{background:#fff;transform:translateY(-2px);}
 .testi-dots{display:flex;align-items:center;gap:8px;}
 /* size-graduated dots: the active slide's dot is largest, its immediate
    neighbors are medium, everything further out stays smallest (JS assigns
    is-active / is-near based on distance from the current slide). */
 .testi-dot{
   width:6px;height:6px;border-radius:50%;flex-shrink:0;
-  background:rgba(10,26,60,0.2);
+  background:rgba(255,255,255,0.4);
   transition:width .25s var(--ease), height .25s var(--ease), background .25s ease;
 }
-.testi-dot.is-near{width:8px;height:8px;background:rgba(10,26,60,0.35);}
-.testi-dot.is-active{width:13px;height:13px;background:var(--accent);}
+.testi-dot.is-near{width:8px;height:8px;background:rgba(255,255,255,0.7);}
+.testi-dot.is-active{width:13px;height:13px;background:#fff;}
 
 @media (max-width:560px){
   .testi-slide{padding:26px;flex-basis:88%;}

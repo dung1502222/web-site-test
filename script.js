@@ -2,14 +2,13 @@
    IRL landing page — vanilla JS only. No build step, no dependencies.
    Sections:
      1. Mobile nav toggle
-     2. Sticky nav scroll shadow
-     3. Scroll-reveal animations (IntersectionObserver)
-     4. Parallax on background blobs
-     5. Waitlist form (client-side only — see comment before wiring a backend)
-     6. Hero demo card ("Not this week" / "I'd be up for this")
-     7. Friday chat demo (suggest another time / confirm)
-     8. Rooms — spread cards ("Not this time" / "I'm interested")
-     9. Footer year
+     2. Scroll-reveal animations (IntersectionObserver)
+     3. Parallax on background blobs
+     4. Waitlist form (client-side only — see comment before wiring a backend)
+     5. Hero demo card ("Not this week" / "I'd be up for this")
+     6. Friday chat demo (suggest another time / confirm)
+     7. Rooms — spread cards ("Not this time" / "I'm interested")
+     8. Footer year
 ============================================================================ */
 
 (function () {
@@ -44,21 +43,7 @@
   }
 
   /* --------------------------------------------------------------------
-     2. STICKY NAV SCROLL SHADOW
-  -------------------------------------------------------------------- */
-  var siteNav = document.getElementById('siteNav');
-  function updateNavShadow() {
-    if (window.scrollY > 8) {
-      siteNav.classList.add('is-scrolled');
-    } else {
-      siteNav.classList.remove('is-scrolled');
-    }
-  }
-  window.addEventListener('scroll', updateNavShadow, { passive: true });
-  updateNavShadow();
-
-  /* --------------------------------------------------------------------
-     3. SCROLL-REVEAL ANIMATIONS
+     2. SCROLL-REVEAL ANIMATIONS
      Any element with class="reveal" fades/slides in once it enters
      the viewport. Uses IntersectionObserver — no scroll-jank libraries.
   -------------------------------------------------------------------- */
@@ -83,7 +68,7 @@
   }
 
   /* --------------------------------------------------------------------
-     4. PARALLAX ON BACKGROUND BLOBS
+     3. PARALLAX ON BACKGROUND BLOBS
      Elements with [data-parallax="0.1"] drift vertically as the page
      scrolls, layered on top of their own floating CSS keyframe animation.
      Throttled with requestAnimationFrame to stay smooth.
@@ -110,7 +95,7 @@
   }
 
   /* --------------------------------------------------------------------
-     5. WAITLIST FORM (client-side only, no backend yet)
+     4. WAITLIST FORM (client-side only, no backend yet)
      Validates the email format and shows a success state in place of
      the form. Nothing is sent anywhere yet.
 
@@ -174,7 +159,7 @@
   }
 
   /* --------------------------------------------------------------------
-     6. HERO DEMO CARD
+     5. HERO DEMO CARD
      A tiny taste of the product right in the hero, told as three stacked
      "screens" inside the same card (see .hero__screens in style.css, which
      layers them so the card's height never changes when switching between
@@ -268,7 +253,7 @@
   }
 
   /* --------------------------------------------------------------------
-     7. FRIDAY CHAT DEMO
+     6. FRIDAY CHAT DEMO
      A small illustrative chat: "Another time" tweaks the suggested slot,
      "Confirm" swaps the time-card for a confirmed state. Purely a demo of
      the product's Friday "commit to a real plan" step — nothing is sent.
@@ -290,7 +275,7 @@
   }
 
   /* --------------------------------------------------------------------
-     8. ROOMS — spread cards
+     7. ROOMS — spread cards
      Room cards (see .room-card in index.html) are laid out side by side
      rather than stacked, so each one responds independently: "Not this
      time" fades that card out; "I'm interested" flashes a "You're in"
@@ -341,7 +326,7 @@
   }
 
   /* --------------------------------------------------------------------
-     9. FOOTER YEAR
+     8. FOOTER YEAR
   -------------------------------------------------------------------- */
   var yearEl = document.getElementById('year');
   if (yearEl) yearEl.textContent = new Date().getFullYear();

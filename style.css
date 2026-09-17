@@ -46,6 +46,7 @@
 ====================================================================== */
 *,*::before,*::after{box-sizing:border-box;}
 html{scroll-behavior:smooth;scroll-padding-top:84px;} /* keeps anchor-linked sections from landing underneath the fixed nav */
+html,body{overflow-x:hidden;} /* guards against 100vw full-bleed elements (see .rooms::before) overshooting the viewport by the scrollbar's width and causing horizontal scroll */
 body{
   margin:0;
   font-family:'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
@@ -185,32 +186,26 @@ input{font:inherit;}
    4. NAV
 ====================================================================== */
 .nav{
-  /* fixed (not sticky) so it overlaps the hero from the very first frame —
-     with a transparent background, that means it's showing the hero's own
-     photo behind it, not a separate copy of it. .hero's extra top padding
-     (and html's scroll-padding-top, for anchor links) compensate for the
-     nav no longer taking up its own space in normal flow. */
-  position:fixed;top:0;left:0;right:0;z-index:500;
+  /* absolute (not fixed) so it overlaps the hero's photo from the very
+     first frame — with a transparent background, that means it's showing
+     the hero's own photo behind it, not a separate copy of it — but
+     scrolls away with the page like normal content instead of staying
+     pinned to the viewport. .hero's extra top padding (and html's
+     scroll-padding-top, for anchor links) compensate for the nav no
+     longer taking up its own space in normal flow. */
+  position:absolute;top:0;left:0;right:0;z-index:500;
   padding:14px 0;
   background:transparent;
-  border-bottom:1px solid transparent;
-  transition:box-shadow .3s ease, background .3s ease, border-color .3s ease;
-}
-/* solid again once scrolled — a transparent bar reads fine over the hero's
-   dark photo (with light text below) but needs a real background once it's
-   pinned over the lighter sections that follow */
-.nav.is-scrolled{
-  background:var(--off-white);
-  border-bottom-color:rgba(13,59,102,0.06);
-  box-shadow:0 8px 24px rgba(13,59,102,0.08);
+  /* nav only ever sits over the hero's photo (it scrolls away with the
+     page rather than staying pinned once you scroll past it), so there's
+     no "solid over lighter content" state to switch to — it stays
+     transparent, with light text, for its whole visible lifetime */
 }
 .nav__inner{display:flex;align-items:center;justify-content:space-between;gap:20px;}
 .nav__logo{
   display:inline-flex;align-items:baseline;gap:3px;
   font-weight:900;font-size:calc(22px * var(--text-scale));letter-spacing:-.02em;color:#fff;
-  transition:color .3s ease;
 }
-.nav.is-scrolled .nav__logo{color:var(--navy-900);}
 .nav__logo::after{
   content:"";
   width:7px;height:7px;border-radius:50%;
@@ -221,8 +216,6 @@ input{font:inherit;}
 .nav__links{display:flex;gap:32px;}
 .nav__links a{font-weight:600;font-size:calc(15px * var(--text-scale));color:rgba(255,255,255,0.85);transition:color .2s ease;}
 .nav__links a:hover{color:#fff;}
-.nav.is-scrolled .nav__links a{color:var(--muted);}
-.nav.is-scrolled .nav__links a:hover{color:var(--navy-900);}
 .nav__actions{display:flex;align-items:center;gap:14px;}
 
 /* The "Join Waitlist" button appears twice in markup (once inside nav__links
@@ -238,9 +231,8 @@ input{font:inherit;}
 }
 .nav__toggle span{
   width:22px;height:2px;background:#fff;border-radius:2px;
-  transition:transform .25s var(--ease), opacity .25s var(--ease), background .3s ease;
+  transition:transform .25s var(--ease), opacity .25s var(--ease);
 }
-.nav.is-scrolled .nav__toggle span{background:var(--navy-900);}
 .nav__toggle[aria-expanded="true"] span:nth-child(1){transform:translateY(7px) rotate(45deg);}
 .nav__toggle[aria-expanded="true"] span:nth-child(2){opacity:0;}
 .nav__toggle[aria-expanded="true"] span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
@@ -281,6 +273,7 @@ input{font:inherit;}
 ====================================================================== */
 .hero{
   position:relative;
+  overflow-x:hidden;
   padding:140px 0 100px; /* extra top space reserves room for the fixed nav overlapping this section */
   /* full-bleed lifestyle photo behind the hero, darkened more on the left
      (where the headline sits) and lighter toward the right (where the
@@ -325,7 +318,7 @@ input{font:inherit;}
   box-shadow:0 0 10px var(--accent);
 }
 .hero h1{
-  font-size:clamp(calc(38px * var(--text-scale)), 5.4vw, calc(74px * var(--text-scale)));
+  font-size:clamp(calc(32px * var(--text-scale)), 4.2vw, calc(56px * var(--text-scale)));
   line-height:1.04;
   font-weight:900;
   letter-spacing:-.03em;
@@ -379,7 +372,14 @@ input{font:inherit;}
   display:flex;
   flex-direction:column;
   justify-content:flex-end;
-  min-height:540px;
+  /* aspect-ratio (not a fixed min-height px value) so the card's
+     proportions stay consistent and scale smoothly at any viewport width,
+     instead of jumping between fixed heights at each breakpoint — which
+     is what made the photo's crop look inconsistent/"broken" in between
+     them. Content can still push the card taller than this if it needs
+     to (e.g. a long Matched-screen confirm box on a very narrow card). */
+  aspect-ratio:3/4;
+  min-height:400px;
 }
 .hero__card-label{font-size:calc(14px * var(--text-scale));font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--glow);}
 .hero__card-title{
@@ -460,34 +460,34 @@ input{font:inherit;}
    layered in the same grid cell instead of stacked in normal flow, so the
    container's height is always the tallest of the three, and swapping
    .is-active never resizes the card. */
-.hero__screens{
-  display:grid;
-}
+/* Only the active screen is ever in flow — Profile / Matched / Confirmed
+   are genuinely different amounts of content, so the card's height is
+   free to change between them. The one thing that must NOT cause a
+   height change is cycling between the three sample profiles within the
+   Profile screen itself — that's handled separately, by reserving a
+   small buffer on .hero__card-title / .hero__card-quote (see below). */
 .hero__screen{
-  grid-area:1 / 1;
-  align-self:start;
-  opacity:0;
-  visibility:hidden;
-  pointer-events:none;
-  transition:opacity .3s var(--ease);
+  display:none;
 }
 .hero__screen.is-active{
-  opacity:1;
-  visibility:visible;
-  pointer-events:auto;
+  display:block;
 }
 
 .hero__confirm-row{
-  display:flex;align-items:center;justify-content:space-between;gap:12px;
-  margin-top:12px;
-  padding:12px 16px;
-  border-radius:var(--radius-sm);
+  display:flex;align-items:center;justify-content:space-between;gap:16px;
+  margin-top:14px;
+  padding:20px 22px;
+  border-radius:var(--radius-md);
   background:rgba(255,255,255,0.1);
   border:1px solid rgba(255,255,255,0.2);
 }
-.hero__confirm-details{display:flex;flex-direction:column;gap:2px;}
-.hero__confirm-time{font-size:calc(14.5px * var(--text-scale));font-weight:700;color:#fff;}
-.hero__confirm-place{font-size:calc(13px * var(--text-scale));color:var(--muted-on-navy);}
+.hero__confirm-details{display:flex;flex-direction:column;gap:4px;}
+.hero__confirm-label{
+  font-size:calc(11px * var(--text-scale));font-weight:800;letter-spacing:.05em;text-transform:uppercase;
+  color:rgba(255,255,255,0.6);
+}
+.hero__confirm-time{font-size:calc(17px * var(--text-scale));font-weight:700;color:#fff;}
+.hero__confirm-place{font-size:calc(14.5px * var(--text-scale));font-weight:700;color:var(--accent);}
 
 .hero__cheer{
   margin-top:12px;
@@ -519,9 +519,65 @@ input{font:inherit;}
      riding only below 640px, so 640–940px still had it stranded on the
      right with a lopsided gap on the left). */
   .hero__card--main{width:92%;margin-left:auto;margin-right:auto;}
+
+  /* the card's own text stays left-aligned regardless of .hero__inner's
+     text-align:center above — without this override it was inherited by
+     every plain text element in the card (tag/label/title/quote) but NOT
+     by .hero__match-id (a flex row, unaffected by text-align), so the
+     name ended up visually detached from everything centered below it */
+  .hero__match-body{text-align:left;}
+
+  /* medium-size tuning for the 521–940px gap: previously the card kept
+     full desktop font sizes here even though the layout had already
+     switched to the stacked/mobile arrangement, so text looked oversized
+     relative to the card. Sits between the desktop defaults and the
+     smaller ≤520px overrides further below. */
+  .hero__match-id strong{font-size:calc(19px * var(--text-scale));}
+  .hero__match-tag{font-size:calc(13.5px * var(--text-scale));}
+  .hero__card-label{font-size:calc(12.5px * var(--text-scale));}
+  .hero__card-title{
+    font-size:calc(21px * var(--text-scale));
+    min-height:calc(21px * var(--text-scale) * 1.3 * 1.1);
+  }
+  .hero__card-quote{
+    font-size:calc(14.5px * var(--text-scale));
+    min-height:calc(14.5px * var(--text-scale) * 1.55 * 1.1);
+  }
+  .hero__card-actions .btn{font-size:calc(14px * var(--text-scale));padding:11px 20px;}
 }
 @media (max-width:520px){
   .hero{padding:120px 0 70px;}
+  /* the row squeezed .hero__confirm-details into a sliver next to the
+     fixed-width Confirm button, wrapping every line down to single words —
+     stack them instead, with the button going full-width below the text */
+  .hero__confirm-row{flex-direction:column;align-items:stretch;}
+  .hero__confirm-row .btn{width:100%;}
+
+  /* smaller text — left-aligned, not centered — so the block reads as a
+     compact, tidy stack instead of oversized wrapped lines eating up
+     most of the card's height */
+  .hero__match-id strong{font-size:calc(16px * var(--text-scale));}
+  .hero__match-tag{font-size:calc(12px * var(--text-scale));}
+  .hero__card-label{font-size:calc(11px * var(--text-scale));}
+  .hero__card-title{
+    font-size:calc(14px * var(--text-scale));
+    margin-top:4px;
+    min-height:calc(14px * var(--text-scale) * 1.3 * 1.1);
+  }
+  .hero__card-quote{
+    font-size:calc(13px * var(--text-scale));
+    margin-top:6px;
+    min-height:calc(13px * var(--text-scale) * 1.55 * 1.1);
+  }
+  /* flex-wrap:nowrap + flex:1 keeps both buttons on one row, splitting the
+     width evenly; white-space stays nowrap (the .btn default) so the
+     label itself never breaks onto a second line inside the button */
+  .hero__card-actions{margin-top:10px;flex-wrap:nowrap;gap:8px;}
+  .hero__card-actions .btn{
+    flex:1;min-width:0;
+    font-size:calc(10.5px * var(--text-scale));padding:9px 4px;
+    overflow:hidden;text-overflow:ellipsis;
+  }
 }
 
 /* ======================================================================
@@ -752,8 +808,11 @@ section:not(.hero){border-top:1px solid var(--navy-900);}
   content:"";
   position:absolute;
   top:0;bottom:0;left:50%;
-  width:100vw;
-  transform:translateX(-50%);
+  /* a large fixed pixel width (not 100vw) centered via margin — 100vw
+     counts the vertical scrollbar's own width, so it was always a little
+     wider than the actual visible viewport and forced horizontal scroll */
+  width:3000px;
+  margin-left:-1500px;
   background:var(--off-white);
   z-index:-1;
 }

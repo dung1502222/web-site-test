@@ -6,11 +6,10 @@
      3. Scroll-reveal animations (IntersectionObserver)
      4. Parallax on background blobs
      5. Waitlist form (client-side only — see comment before wiring a backend)
-     6. Testimonial swiper (scroll-snap track + prev/next + dots)
-     7. Hero demo card ("Not this week" / "I'd be up for this")
-     8. Friday chat demo (suggest another time / confirm)
-     9. Rooms swipe deck ("Not this time" / "I'm interested")
-     10. Footer year
+     6. Hero demo card ("Not this week" / "I'd be up for this")
+     7. Friday chat demo (suggest another time / confirm)
+     8. Rooms — spread cards ("Not this time" / "I'm interested")
+     9. Footer year
 ============================================================================ */
 
 (function () {
@@ -175,145 +174,68 @@
   }
 
   /* --------------------------------------------------------------------
-     6. TESTIMONIAL SWIPER (infinite loop)
-     A native horizontally-scrolling, scroll-snapping track (so touch/
-     trackpad swipe works for free) plus prev/next buttons and dot
-     indicators. To make it loop seamlessly in both directions — including
-     when the user drags/swipes by hand, not just via the buttons — a copy
-     of the last couple of slides is cloned in front of the first slide,
-     and a copy of the first couple cloned after the last slide. Once a
-     scroll settles on one of those clones, we silently (no animation) snap
-     back to the equivalent real slide, so it looks endless.
-  -------------------------------------------------------------------- */
-  var testiTrack = document.getElementById('testiTrack');
-
-  if (testiTrack) {
-    var testiReal = Array.prototype.slice.call(testiTrack.children);
-    var testiTotal = testiReal.length;
-    var testiCloneCount = Math.min(2, testiTotal);
-
-    // Clone the last `testiCloneCount` slides in front (in the right order)…
-    for (var f = 0; f < testiCloneCount; f++) {
-      var frontClone = testiReal[testiTotal - 1 - f].cloneNode(true);
-      frontClone.classList.add('testi-clone');
-      frontClone.setAttribute('aria-hidden', 'true');
-      testiTrack.insertBefore(frontClone, testiTrack.firstChild);
-    }
-    // …and the first `testiCloneCount` slides after the last one.
-    for (var b = 0; b < testiCloneCount; b++) {
-      var backClone = testiReal[b].cloneNode(true);
-      backClone.classList.add('testi-clone');
-      backClone.setAttribute('aria-hidden', 'true');
-      testiTrack.appendChild(backClone);
-    }
-
-    var testiAll = Array.prototype.slice.call(testiTrack.children); // real + clones
-    var testiDots = Array.prototype.slice.call(document.querySelectorAll('#testiDots .testi-dot'));
-    var testiPrev = document.getElementById('testiPrev');
-    var testiNext = document.getElementById('testiNext');
-    var testiCurrent = 0; // real slide index, 0..testiTotal-1
-
-    function testiGoTo(realIndex, instant) {
-      testiCurrent = ((realIndex % testiTotal) + testiTotal) % testiTotal;
-      var target = testiAll[testiCloneCount + testiCurrent];
-      target.scrollIntoView({ behavior: instant ? 'auto' : 'smooth', inline: 'center', block: 'nearest' });
-      testiUpdateDots();
-    }
-
-    // Size/highlight dots by distance from the active slide: active is
-    // biggest, its immediate neighbors medium, everything else smallest.
-    function testiUpdateDots() {
-      testiDots.forEach(function (dot, i) {
-        var dist = Math.abs(i - testiCurrent);
-        dot.classList.remove('is-active', 'is-near');
-        if (dist === 0) dot.classList.add('is-active');
-        else if (dist === 1) dot.classList.add('is-near');
-      });
-    }
-
-    if (testiPrev) testiPrev.addEventListener('click', function () { testiGoTo(testiCurrent - 1); });
-    if (testiNext) testiNext.addEventListener('click', function () { testiGoTo(testiCurrent + 1); });
-    testiDots.forEach(function (dot, i) {
-      dot.addEventListener('click', function () { testiGoTo(i); });
-    });
-
-    // Which slide (real or clone) is currently closest to the track's center.
-    function testiNearestAllIndex() {
-      var trackCenter = testiTrack.scrollLeft + testiTrack.clientWidth / 2;
-      var closest = 0;
-      var closestDist = Infinity;
-      testiAll.forEach(function (slide, i) {
-        var slideCenter = slide.offsetLeft + slide.offsetWidth / 2;
-        var dist = Math.abs(slideCenter - trackCenter);
-        if (dist < closestDist) { closestDist = dist; closest = i; }
-      });
-      return closest;
-    }
-
-    // After the user stops scrolling/dragging: if they landed on a cloned
-    // slide, jump (instantly, invisibly) to the matching real slide so the
-    // track always has real content to keep scrolling into either way.
-    function testiHandleSettle() {
-      var idx = testiNearestAllIndex();
-      if (idx < testiCloneCount) {
-        testiCurrent = testiTotal - testiCloneCount + idx;
-        testiAll[testiCloneCount + testiCurrent].scrollIntoView({ behavior: 'auto', inline: 'center', block: 'nearest' });
-      } else if (idx >= testiCloneCount + testiTotal) {
-        testiCurrent = idx - testiCloneCount - testiTotal;
-        testiAll[testiCloneCount + testiCurrent].scrollIntoView({ behavior: 'auto', inline: 'center', block: 'nearest' });
-      } else {
-        testiCurrent = idx - testiCloneCount;
-      }
-      testiUpdateDots();
-    }
-
-    // Debounce: react once scrolling has actually stopped, not on every frame.
-    var testiScrollTimer = null;
-    testiTrack.addEventListener('scroll', function () {
-      if (testiScrollTimer) clearTimeout(testiScrollTimer);
-      testiScrollTimer = setTimeout(testiHandleSettle, 120);
-    }, { passive: true });
-
-    testiGoTo(0, true); // start on the first real slide (past the front clones)
-  }
-
-  /* --------------------------------------------------------------------
-     7. HERO DEMO CARD
-     A tiny taste of the product right in the hero: "Not this week" cycles
-     through a couple of sample introductions; "I'd be up for this" reveals
-     the mutual-curiosity note. Nothing here is submitted anywhere — it's
-     just illustrating the product's own "Wednesday: mutual curiosity" step.
+     6. HERO DEMO CARD
+     A tiny taste of the product right in the hero, told as three stacked
+     "screens" inside the same card (see .hero__screens in style.css, which
+     layers them so the card's height never changes when switching between
+     them): browsing (cycle samples with "Not this week" / pick one with
+     "I'd be up for this") -> matched (mutual curiosity, straight into
+     locking in a time) -> confirmed. Once you've matched there's no way
+     back to browsing — same as the real product, you don't keep matching
+     with other people. Nothing here is submitted anywhere.
   -------------------------------------------------------------------- */
   var heroDemoName = document.getElementById('heroDemoName');
   var heroDemoTag = document.getElementById('heroDemoTag');
   var heroDemoPlan = document.getElementById('heroDemoPlan');
   var heroDemoQuote = document.getElementById('heroDemoQuote');
   var heroMatchPhoto = document.getElementById('heroMatchPhoto');
-  var heroMutualNote = document.getElementById('heroMutualNote');
+  var heroScreenProfile = document.getElementById('heroScreenProfile');
+  var heroScreenMatched = document.getElementById('heroScreenMatched');
+  var heroScreenConfirmed = document.getElementById('heroScreenConfirmed');
+  var heroConfirmTime = document.getElementById('heroConfirmTime');
+  var heroConfirmPlace = document.getElementById('heroConfirmPlace');
+  var heroConfirmedTime = document.getElementById('heroConfirmedTime');
+  var heroConfirmedPlace = document.getElementById('heroConfirmedPlace');
   var heroNotThisWeek = document.getElementById('heroNotThisWeek');
   var heroUpForThis = document.getElementById('heroUpForThis');
+  var heroConfirmBtn = document.getElementById('heroConfirmBtn');
 
   if (heroDemoName && heroNotThisWeek && heroUpForThis) {
-    // Each sample pairs a bit of copy with its own stock photo (Unsplash,
-    // free license) so the card actually changes when you click through.
+    var heroScreens = [heroScreenProfile, heroScreenMatched, heroScreenConfirmed];
+    function showHeroScreen(target) {
+      heroScreens.forEach(function (screen) {
+        if (screen) screen.classList.toggle('is-active', screen === target);
+      });
+    }
+
+    // Each sample is built around one specific weekend activity (not just
+    // a generic "coffee date") — its own stock photo (Unsplash, free
+    // license), and its own time/place that carries through to the
+    // matched and confirmed screens once you pick it.
     var heroSamples = [
       {
-        name: 'Hà, 24', tag: 'Research · films · tiny cafés',
-        plan: 'Gallery · Saturday afternoon',
-        quote: '“My ideal Sunday starts with good coffee and nowhere urgent to be.”',
-        photo: 'https://images.unsplash.com/photo-1542719018-ee28cbdc71ee?auto=format&fit=crop&crop=faces&w=600&q=75'
+        name: 'Hà, 24', tag: 'Research · morning runs · tiny cafés',
+        plan: 'Morning run · Sunday, Sala',
+        quote: '“Best conversations happen mid-run, not over dinner.”',
+        photo: 'https://images.unsplash.com/photo-1542719018-ee28cbdc71ee?auto=format&fit=crop&crop=faces&w=600&q=75',
+        confirmTime: 'Sun · 6:30 AM',
+        confirmPlace: 'Riverside path, Sala'
       },
       {
-        name: 'Mai, 26', tag: 'Marketing · food · badminton',
-        plan: 'Coffee · Sunday afternoon',
-        quote: '“Give me a good flat white and I’ll talk to anyone.”',
-        photo: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&crop=faces&w=600&q=75'
+        name: 'Mai, 26', tag: 'Marketing · galleries · badminton',
+        plan: 'Art exhibition · Saturday afternoon',
+        quote: '“I read every placard. Slow museum dates only.”',
+        photo: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&crop=faces&w=600&q=75',
+        confirmTime: 'Sat · 3:00 PM',
+        confirmPlace: 'Fine Arts Museum, District 1'
       },
       {
-        name: 'An, 25', tag: 'Product · cameras · playlists',
-        plan: 'Photo walk · Saturday morning',
-        quote: '“I like dates that could just as easily be a solo afternoon.”',
-        photo: 'https://images.unsplash.com/photo-1546961329-78bef0414d7c?auto=format&fit=crop&crop=faces&w=600&q=75'
+        name: 'An, 25', tag: 'Product · board games · playlists',
+        plan: 'Board games · Sunday evening',
+        quote: '“Fair warning: I’m competitive at board games.”',
+        photo: 'https://images.unsplash.com/photo-1546961329-78bef0414d7c?auto=format&fit=crop&crop=faces&w=600&q=75',
+        confirmTime: 'Sun · 7:00 PM',
+        confirmPlace: 'Board game café, District 3'
       }
     ];
     var heroSampleIndex = 0;
@@ -325,20 +247,28 @@
       heroDemoPlan.textContent = sample.plan;
       heroDemoQuote.textContent = sample.quote;
       if (heroMatchPhoto) heroMatchPhoto.style.backgroundImage = 'url("' + sample.photo + '")';
+      if (heroConfirmTime) heroConfirmTime.textContent = sample.confirmTime;
+      if (heroConfirmPlace) heroConfirmPlace.textContent = sample.confirmPlace;
+      if (heroConfirmedTime) heroConfirmedTime.textContent = sample.confirmTime;
+      if (heroConfirmedPlace) heroConfirmedPlace.textContent = sample.confirmPlace;
     }
 
     heroNotThisWeek.addEventListener('click', function () {
       heroSampleIndex = (heroSampleIndex + 1) % heroSamples.length;
       heroRenderSample(heroSampleIndex);
-      heroMutualNote.hidden = true;
     });
     heroUpForThis.addEventListener('click', function () {
-      heroMutualNote.hidden = false;
+      showHeroScreen(heroScreenMatched);
     });
+    if (heroConfirmBtn) {
+      heroConfirmBtn.addEventListener('click', function () {
+        showHeroScreen(heroScreenConfirmed);
+      });
+    }
   }
 
   /* --------------------------------------------------------------------
-     8. FRIDAY CHAT DEMO
+     7. FRIDAY CHAT DEMO
      A small illustrative chat: "Another time" tweaks the suggested slot,
      "Confirm" swaps the time-card for a confirmed state. Purely a demo of
      the product's Friday "commit to a real plan" step — nothing is sent.
@@ -360,7 +290,7 @@
   }
 
   /* --------------------------------------------------------------------
-     9. ROOMS — spread cards
+     8. ROOMS — spread cards
      Room cards (see .room-card in index.html) are laid out side by side
      rather than stacked, so each one responds independently: "Not this
      time" fades that card out; "I'm interested" flashes a "You're in"
@@ -411,7 +341,7 @@
   }
 
   /* --------------------------------------------------------------------
-     10. FOOTER YEAR
+     9. FOOTER YEAR
   -------------------------------------------------------------------- */
   var yearEl = document.getElementById('year');
   if (yearEl) yearEl.textContent = new Date().getFullYear();

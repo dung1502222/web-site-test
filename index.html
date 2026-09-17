@@ -28,10 +28,9 @@
     <a href="#top" class="nav__logo">IRL</a>
 
     <nav class="nav__links" id="navLinks">
-      <a href="#how-it-works">How it Works</a>
       <a href="#different">Why IRL</a>
+      <a href="#how-it-works">How it Works</a>
       <a href="#who">Who it's for</a>
-      <a href="#faq">FAQ</a>
       <a href="#waitlist" class="btn btn--primary btn--small" style="margin-top:8px;">Apply Now</a>
     </nav>
 
@@ -75,25 +74,53 @@
         <!-- A single sample introduction. Photos are stock photos from
              Unsplash (free license, hotlinked — https://unsplash.com/license),
              standing in for the kind of headshot a real profile would use. -->
-        <div class="hero__card glass--navy glass hero__card--main">
+        <div class="hero__card hero__card--main">
           <div class="hero__match-photo" id="heroMatchPhoto">
             <span class="hero__match-badge">This week</span>
-            <div class="hero__match-id">
-              <strong id="heroDemoName">Hà, 24</strong>
-              <span id="heroDemoTag">Research · films · tiny cafés</span>
-            </div>
           </div>
           <div class="hero__match-body">
-            <p class="hero__card-label">Someone for this weekend</p>
-            <p class="hero__card-title" id="heroDemoPlan">Gallery · Saturday afternoon</p>
-            <p class="hero__card-quote" id="heroDemoQuote">"My ideal Sunday starts with good coffee and nowhere urgent to be."</p>
-            <div class="hero__card-actions">
-              <button type="button" class="btn btn--ghost btn--small" id="heroNotThisWeek">Not this week</button>
-              <button type="button" class="btn btn--primary btn--small" id="heroUpForThis">I'd be up for this</button>
+            <div class="hero__match-id">
+              <strong id="heroDemoName">Hà, 24</strong>
+              <span class="hero__verified-badge" title="Reviewed profile" aria-label="Reviewed profile">✓</span>
             </div>
-            <div class="hero__mutual-note" id="heroMutualNote" hidden>
-              <strong>You're both curious.</strong>
-              <span>A short get-to-know window opens next — still feeling it by Friday? Lock in a real plan.</span>
+            <p class="hero__match-tag" id="heroDemoTag">Research · morning runs · tiny cafés</p>
+
+            <!-- The three states below are stacked on top of one another
+                 (see .hero__screens in style.css) so the card's height stays
+                 constant no matter which one is showing — switching states
+                 never resizes the card. Once "I'd be up for this" is picked,
+                 the profile screen (and "Not this week") is gone for good:
+                 you don't go back to browsing after you've matched. -->
+            <div class="hero__screens">
+              <div class="hero__screen is-active" id="heroScreenProfile">
+                <p class="hero__card-label">Someone for this weekend</p>
+                <p class="hero__card-title" id="heroDemoPlan">Morning run · Sunday, Sala</p>
+                <p class="hero__card-quote" id="heroDemoQuote">"Best conversations happen mid-run, not over dinner."</p>
+                <div class="hero__card-actions">
+                  <button type="button" class="btn btn--ghost btn--small" id="heroNotThisWeek">Not this week</button>
+                  <button type="button" class="btn btn--primary btn--small" id="heroUpForThis">I'd be up for this</button>
+                </div>
+              </div>
+              <div class="hero__screen" id="heroScreenMatched">
+                <p class="hero__card-label">You're both curious</p>
+                <p class="hero__card-title">Lock in the plan</p>
+                <p class="hero__card-quote">Still feeling it by Friday? Time to make it real.</p>
+                <div class="hero__confirm-row">
+                  <div class="hero__confirm-details">
+                    <span class="hero__confirm-time" id="heroConfirmTime">Sun · 6:30 AM</span>
+                    <span class="hero__confirm-place" id="heroConfirmPlace">Riverside path, Sala</span>
+                  </div>
+                  <button type="button" class="btn btn--primary btn--small" id="heroConfirmBtn">Confirm</button>
+                </div>
+              </div>
+              <div class="hero__screen" id="heroScreenConfirmed">
+                <p class="hero__card-label">Locked in</p>
+                <p class="hero__card-title" id="heroConfirmedTime">Sun · 6:30 AM</p>
+                <p class="hero__card-quote" id="heroConfirmedPlace">Riverside path, Sala</p>
+                <div class="hero__cheer">
+                  <strong>Have a great time. 🎉</strong>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -102,48 +129,40 @@
   </section>
 
   <!-- ==========================================================================
-       2. THE PROBLEM
+       2. WHAT MAKES IRL DIFFERENT
   ========================================================================== -->
-  <section class="problem section-alt" id="problem">
+  <section class="different" id="different">
     <div class="container">
       <div class="section-head reveal">
-        <span class="eyebrow eyebrow--center">The problem</span>
-        <h2>Endless swiping. Endless texting. Rarely a real date.</h2>
-        <p>The apps in your phone right now are optimized for attention, not outcomes.
-          More matches just means more people to manage — not more people to meet.</p>
+        <span class="eyebrow eyebrow--center">Why IRL</span>
+        <h2>What makes IRL different</h2>
+        <p>Three decisions that change what dating feels like — before, during, and after the date. Meeting sooner shouldn't mean trusting blindly.</p>
       </div>
 
-      <div class="problem__grid">
-        <div class="problem__card problem__card--bad glass reveal reveal--delay-1">
-          <h3>What you have now</h3>
-          <ul>
-            <li>Hundreds of matches, most going nowhere</li>
-            <li>Weeks-long chats before anyone suggests a date</li>
-            <li>Profiles you can't really trust until you meet</li>
-            <li>Ghosting with zero closure, on both sides</li>
-          </ul>
+      <div class="features">
+        <div class="feature-card glass reveal">
+          <div class="feature-card__icon">✓</div>
+          <h3>Reviewed Profiles</h3>
+          <p>Reviewed, not rated. We check that profiles are real, complete, and give someone enough context to feel comfortable meeting — so trust is built upfront, not earned after a week of back-and-forth texting.</p>
         </div>
-        <div class="problem__card problem__card--good glass glass--navy reveal reveal--delay-2">
-          <h3>What IRL gives you</h3>
-          <ul>
-            <li>A handful of introductions, chosen with intention</li>
-            <li>A short window before you commit to a real plan</li>
-            <li>Every profile reviewed before you ever see it</li>
-            <li>A private, honest signal after you meet — no guessing</li>
-          </ul>
+        <div class="feature-card glass reveal reveal--delay-1">
+          <div class="feature-card__icon">◆</div>
+          <h3>Fewer, Better Introductions</h3>
+          <p>We trade infinite swiping for a handful of intentional introductions a week — quality curation over endless scroll.</p>
+        </div>
+        <div class="feature-card glass reveal reveal--delay-2">
+          <div class="feature-card__icon">↻</div>
+          <h3>See Again, Not Just Matched</h3>
+          <p>After you meet, a private, low-pressure "See Again?" lets you signal real interest — without the awkwardness of asking first.</p>
         </div>
       </div>
-
-      <p class="problem__lede reveal">
-        IRL asks one question every week: are you meeting someone worth your Saturday?
-      </p>
     </div>
   </section>
 
   <!-- ==========================================================================
        3. HOW IT WORKS — YOUR WEEK WITH IRL
   ========================================================================== -->
-  <section class="how" id="how-it-works">
+  <section class="how section-alt" id="how-it-works">
     <div class="container">
       <div class="section-head reveal">
         <span class="eyebrow eyebrow--center">How it works</span>
@@ -189,7 +208,7 @@
   <!-- ==========================================================================
        3B. FRIDAY — CHAT HAS ONE JOB
   ========================================================================== -->
-  <section class="chat-demo section-alt" id="chat-demo">
+  <section class="chat-demo" id="chat-demo">
     <div class="container chat-demo__inner">
       <div class="chat-demo__copy reveal">
         <span class="eyebrow">Friday</span>
@@ -225,38 +244,7 @@
   </section>
 
   <!-- ==========================================================================
-       4. WHAT MAKES IRL DIFFERENT
-  ========================================================================== -->
-  <section class="different" id="different">
-    <div class="container">
-      <div class="section-head reveal">
-        <span class="eyebrow eyebrow--center">Why IRL</span>
-        <h2>What makes IRL different</h2>
-        <p>Three decisions that change what dating feels like — before, during, and after the date. Meeting sooner shouldn't mean trusting blindly.</p>
-      </div>
-
-      <div class="features">
-        <div class="feature-card glass reveal">
-          <div class="feature-card__icon">✓</div>
-          <h3>Reviewed Profiles</h3>
-          <p>Reviewed, not rated. We check that profiles are real, complete, and give someone enough context to feel comfortable meeting — so trust is built upfront, not earned after a week of back-and-forth texting.</p>
-        </div>
-        <div class="feature-card glass reveal reveal--delay-1">
-          <div class="feature-card__icon">◆</div>
-          <h3>Fewer, Better Introductions</h3>
-          <p>We trade infinite swiping for a handful of intentional introductions a week — quality curation over endless scroll.</p>
-        </div>
-        <div class="feature-card glass reveal reveal--delay-2">
-          <div class="feature-card__icon">↻</div>
-          <h3>See Again, Not Just Matched</h3>
-          <p>After you meet, a private, low-pressure "See Again?" lets you signal real interest — without the awkwardness of asking first.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ==========================================================================
-       5. WHO IT'S FOR
+       4. WHO IT'S FOR
   ========================================================================== -->
   <section class="who section-alt" id="who">
     <div class="container who__inner">
@@ -343,139 +331,7 @@
   </section>
 
   <!-- ==========================================================================
-       6. SOCIAL PROOF / FOUNDING COHORT
-  ========================================================================== -->
-  <section class="proof" id="proof">
-    <div class="container">
-      <div class="section-head reveal">
-        <span class="eyebrow eyebrow--center">Founding cohort</span>
-        <h2>Founding members from Saigon's most active communities</h2>
-        <p>We're recruiting the first cohort from Saigon's professional, alumni and active social communities.</p>
-      </div>
-
-      <!-- placeholder: replace with real community/club logos once partnerships are confirmed -->
-      <div class="proof__logos reveal">
-        <div class="proof__logo">Professional Networks</div>
-        <div class="proof__logo">Alumni Communities</div>
-        <div class="proof__logo">Sports Clubs</div>
-        <div class="proof__logo">Running &amp; Fitness Groups</div>
-        <div class="proof__logo">Coworking Spaces</div>
-        <div class="proof__logo">Social Circles</div>
-      </div>
-
-      <div class="reveal" style="max-width:480px;margin:0 auto 32px;text-align:center;">
-        <span class="eyebrow eyebrow--center">What we're hearing</span>
-        <p style="margin-top:12px;color:rgba(255,255,255,0.85);font-size:calc(16px * var(--text-scale));">From conversations with young professionals in Saigon.</p>
-      </div>
-
-      <!-- Testimonial swiper: a native scroll-snap track (swipeable by touch
-           or drag out of the box) plus prev/next buttons and dots, all driven
-           by plain JS in script.js — no carousel library. -->
-      <div class="testi-swiper reveal">
-        <div class="testi-track" id="testiTrack">
-          <!-- placeholder: replace each slide's quote + first name/role with a real founding-member testimonial once collected -->
-          <div class="testi-slide glass">
-            <p class="testi-quote">"I don't have time to manage three dating apps. I have time for one good date on Saturday."</p>
-            <div class="testi-who">
-              <!-- placeholder: real headshot photo of this founding member -->
-              <div class="testi-avatar" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="4" fill="currentColor"/><path d="M4 20c0-4.418 3.582-7 8-7s8 2.582 8 7" fill="currentColor"/></svg>
-              </div>
-              <div><strong>Saigon professional</strong><span>Finance, District 1</span></div>
-            </div>
-          </div>
-          <div class="testi-slide glass">
-            <p class="testi-quote">"Knowing profiles are actually reviewed changed how I show up to the first date — way less guessing."</p>
-            <div class="testi-who">
-              <!-- placeholder: real headshot photo of this founding member -->
-              <div class="testi-avatar" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="4" fill="currentColor"/><path d="M4 20c0-4.418 3.582-7 8-7s8 2.582 8 7" fill="currentColor"/></svg>
-              </div>
-              <div><strong>Saigon professional</strong><span>Tech, Thao Dien</span></div>
-            </div>
-          </div>
-          <div class="testi-slide glass">
-            <p class="testi-quote">"The weekly rhythm just fits. I set my intention Monday and by Saturday I'm actually at dinner."</p>
-            <div class="testi-who">
-              <!-- placeholder: real headshot photo of this founding member -->
-              <div class="testi-avatar" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="4" fill="currentColor"/><path d="M4 20c0-4.418 3.582-7 8-7s8 2.582 8 7" fill="currentColor"/></svg>
-              </div>
-              <div><strong>Saigon professional</strong><span>Consulting, District 3</span></div>
-            </div>
-          </div>
-          <div class="testi-slide glass">
-            <p class="testi-quote">"Reviewed profiles meant I wasn't starting from zero trust. It just... worked."</p>
-            <div class="testi-who">
-              <!-- placeholder: real headshot photo of this founding member -->
-              <div class="testi-avatar" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="4" fill="currentColor"/><path d="M4 20c0-4.418 3.582-7 8-7s8 2.582 8 7" fill="currentColor"/></svg>
-              </div>
-              <div><strong>Saigon professional</strong><span>Marketing, District 2</span></div>
-            </div>
-          </div>
-          <div class="testi-slide glass">
-            <p class="testi-quote">"I used to have three apps open and zero dates on the calendar. Now I have one, and an actual Saturday plan."</p>
-            <div class="testi-who">
-              <!-- placeholder: real headshot photo of this founding member -->
-              <div class="testi-avatar" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="4" fill="currentColor"/><path d="M4 20c0-4.418 3.582-7 8-7s8 2.582 8 7" fill="currentColor"/></svg>
-              </div>
-              <div><strong>Saigon professional</strong><span>Product, Binh Thanh</span></div>
-            </div>
-          </div>
-          <div class="testi-slide glass">
-            <p class="testi-quote">"The Second Chance round on Thursday has saved my week more than once."</p>
-            <div class="testi-who">
-              <!-- placeholder: real headshot photo of this founding member -->
-              <div class="testi-avatar" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="4" fill="currentColor"/><path d="M4 20c0-4.418 3.582-7 8-7s8 2.582 8 7" fill="currentColor"/></svg>
-              </div>
-              <div><strong>Saigon professional</strong><span>Legal, District 7</span></div>
-            </div>
-          </div>
-          <div class="testi-slide glass">
-            <p class="testi-quote">"A Room got me out to badminton with people I'd never have matched with otherwise. One of them turned into a real date later."</p>
-            <div class="testi-who">
-              <!-- placeholder: real headshot photo of this founding member -->
-              <div class="testi-avatar" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="4" fill="currentColor"/><path d="M4 20c0-4.418 3.582-7 8-7s8 2.582 8 7" fill="currentColor"/></svg>
-              </div>
-              <div><strong>Saigon professional</strong><span>Operations, District 1</span></div>
-            </div>
-          </div>
-          <div class="testi-slide glass">
-            <p class="testi-quote">"'See Again?' took the guessing out of the morning after. No more wondering if I should text first."</p>
-            <div class="testi-who">
-              <!-- placeholder: real headshot photo of this founding member -->
-              <div class="testi-avatar" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="4" fill="currentColor"/><path d="M4 20c0-4.418 3.582-7 8-7s8 2.582 8 7" fill="currentColor"/></svg>
-              </div>
-              <div><strong>Saigon professional</strong><span>Design, Thao Dien</span></div>
-            </div>
-          </div>
-        </div>
-
-        <div class="testi-controls">
-          <button type="button" class="testi-arrow" id="testiPrev" aria-label="Previous testimonial">‹</button>
-          <div class="testi-dots" id="testiDots" role="tablist" aria-label="Testimonial slides">
-            <button type="button" class="testi-dot is-active" data-index="0" aria-label="Go to slide 1"></button>
-            <button type="button" class="testi-dot" data-index="1" aria-label="Go to slide 2"></button>
-            <button type="button" class="testi-dot" data-index="2" aria-label="Go to slide 3"></button>
-            <button type="button" class="testi-dot" data-index="3" aria-label="Go to slide 4"></button>
-            <button type="button" class="testi-dot" data-index="4" aria-label="Go to slide 5"></button>
-            <button type="button" class="testi-dot" data-index="5" aria-label="Go to slide 6"></button>
-            <button type="button" class="testi-dot" data-index="6" aria-label="Go to slide 7"></button>
-            <button type="button" class="testi-dot" data-index="7" aria-label="Go to slide 8"></button>
-          </div>
-          <button type="button" class="testi-arrow" id="testiNext" aria-label="Next testimonial">›</button>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ==========================================================================
-       7. WAITLIST / SIGNUP
+       5. WAITLIST / SIGNUP
   ========================================================================== -->
   <section class="waitlist section-alt" id="waitlist">
     <div class="container">
@@ -511,40 +367,6 @@
     </div>
   </section>
 
-  <!-- ==========================================================================
-       8. FAQ
-  ========================================================================== -->
-  <section class="faq" id="faq">
-    <div class="container">
-      <div class="section-head reveal">
-        <span class="eyebrow eyebrow--center">FAQ</span>
-        <h2>Questions, answered</h2>
-      </div>
-
-      <div class="faq__list reveal">
-        <details class="faq__item glass">
-          <summary>Is this just another dating app?</summary>
-          <p>Not really. Most apps optimize for how long you stay in the app. IRL optimizes for how quickly you get to a real date — with a weekly rhythm and reviewed profiles instead of endless swiping.</p>
-        </details>
-        <details class="faq__item glass">
-          <summary>How is this different from Tinder or Bumble?</summary>
-          <p>Most dating apps give you a large stream of profiles and matches, then leave you to figure out what happens next. IRL gives you a small number of curated, reviewed introductions each week and structures the path from an introduction to an actual date — including a private way to signal interest afterward.</p>
-        </details>
-        <details class="faq__item glass">
-          <summary>Where does IRL launch first?</summary>
-          <p>Ho Chi Minh City. We're building the founding cohort here first, starting with people already active in the city's professional and sports communities.</p>
-        </details>
-        <details class="faq__item glass">
-          <summary>Do I need to pay?</summary>
-          <p>Joining the waitlist is free, and founding members get free early access. We'll always be upfront before anything ever requires payment.</p>
-        </details>
-        <details class="faq__item glass">
-          <summary>What if I don't click with my introductions?</summary>
-          <p>That's what Thursday's Second Chance round is for — a fresh set of introductions before the week is over, so one quiet week doesn't mean an empty weekend.</p>
-        </details>
-      </div>
-    </div>
-  </section>
 
 </main>
 

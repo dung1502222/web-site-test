@@ -70,21 +70,19 @@
            note — see script.js. -->
 
       <div class="hero__visual reveal reveal--delay-2">
-        <div class="hero__photo-slot" aria-hidden="true"></div>
         <!-- A single sample introduction. Photos are stock photos from
              Unsplash (free license, hotlinked — https://unsplash.com/license),
              standing in for the kind of headshot a real profile would use. -->
         <div class="hero__card hero__card--main">
           <div class="hero__match-photo" id="heroMatchPhoto">
             <span class="hero__match-badge">This week</span>
-          </div>
-          <div class="hero__match-body">
             <div class="hero__match-id">
               <strong id="heroDemoName">Hà, 24</strong>
               <span class="hero__verified-badge" title="Reviewed profile" aria-label="Reviewed profile">✓</span>
             </div>
             <p class="hero__match-tag" id="heroDemoTag">Research · morning runs · tiny cafés</p>
-
+          </div>
+          <div class="hero__match-body">
             <!-- The three states below are stacked on top of one another
                  (see .hero__screens in style.css) so the card's height stays
                  constant no matter which one is showing — switching states
@@ -95,7 +93,7 @@
               <div class="hero__screen is-active" id="heroScreenProfile">
                 <p class="hero__card-label">Someone for this weekend</p>
                 <p class="hero__card-title" id="heroDemoPlan">Morning run · Sunday, Sala</p>
-                <p class="hero__card-quote" id="heroDemoQuote">"Best conversations happen mid-run, not over dinner."</p>
+                <p class="hero__card-quote" id="heroDemoQuote">"Best chats happen mid-run, not over dinner."</p>
                 <div class="hero__card-actions">
                   <button type="button" class="btn btn--ghost btn--small" id="heroNotThisWeek">Not this week</button>
                   <button type="button" class="btn btn--primary btn--small" id="heroUpForThis">I'd be up for this</button>
@@ -174,14 +172,14 @@
            Weekend / After each get their own card below it. -->
       <div class="timeline">
         <div class="timeline__step reveal">
-          <div class="timeline__content glass glass--navy">
+          <div class="timeline__content glass">
             <span class="timeline__day">Monday – Thursday</span>
             <p class="timeline__title">Set your intention, meet your introductions</p>
             <p class="timeline__desc">Tell IRL what you're looking for, then meet a handful of reviewed profiles — chosen with intention, not swiped through by the hundred. If you're both curious, a short window opens to get comfortable, and if nothing clicks by Thursday, a fresh Second Chance round goes out before the week is over.</p>
           </div>
         </div>
         <div class="timeline__step reveal reveal--delay-1">
-          <div class="timeline__content glass glass--navy">
+          <div class="timeline__content glass">
             <span class="timeline__day">Friday</span>
             <p class="timeline__title">Commit to a real plan</p>
             <p class="timeline__desc">Lock in a time. Figure out the place together. No more "we should hang out sometime."</p>
@@ -195,7 +193,7 @@
           </div>
         </div>
         <div class="timeline__step reveal reveal--delay-3">
-          <div class="timeline__content glass glass--navy">
+          <div class="timeline__content glass">
             <span class="timeline__day">After</span>
             <p class="timeline__title">Answer "See Again?"</p>
             <p class="timeline__desc">A private, low-pressure signal after the date — less guessing, a clearer sense of where things stand. If you both say yes, IRL helps you make the next plan.</p>
@@ -272,58 +270,49 @@
     </div>
 
     <!-- ======================================================================
-         ROOMS — cards spread out like a fanned hand rather than a swipe
-         stack, each responding independently: "Not this time" fades that
-         card out; "I'm interested" flashes a joined badge in place. Purely
-         illustrative — see the "ROOMS" section in script.js. No real
-         signups happen here.
+         ROOMS — the "join / see attendees / mutual interest" flow above
+         explains the mechanic; this is just a simple list of the activity
+         types available, plus a CTA into the waitlist.
     ====================================================================== -->
     <div class="container">
       <div class="rooms reveal reveal--delay-3">
         <div class="rooms__head">
           <h3>Not ready for a 1:1?</h3>
-          <p>Join a small badminton or pickleball Room instead.</p>
+          <p>Join a Room instead — a small group activity where everyone showed up with the same good intention you did: to meet someone, not just to play.</p>
         </div>
 
-        <div class="rooms-stack" id="roomsStack">
-          <div class="room-card">
-            <div class="room-card__visual" style="background:linear-gradient(135deg, var(--navy-700), var(--navy-950));">
-              <span class="room-card__icon" aria-hidden="true">🏸</span>
-            </div>
-            <div class="room-card__body">
-              <span class="room-card__day">Saturday · 4:00 PM</span>
-              <h4 class="room-card__title">Weekend Badminton</h4>
-              <p class="room-card__desc">Casual doubles at District 3 — no experience needed, just show up.</p>
-              <span class="room-card__meta">6 going · District 3</span>
-            </div>
-            <div class="room-card__actions">
-              <button type="button" class="btn btn--ghost" data-room-action="pass">Not this time</button>
-              <button type="button" class="btn btn--primary" data-room-action="join">I'm interested</button>
-            </div>
-            <span class="room-card__joined-badge">✓ You're in</span>
+        <div class="rooms__flow">
+          <div class="rooms__flow-step">
+            <div class="rooms__flow-icon" aria-hidden="true">📅</div>
+            <p class="rooms__flow-title">1. Join an activity</p>
+            <p class="rooms__flow-desc">Sign up for a Room — badminton, pickleball, whatever's on this week. Small groups, not a crowd.</p>
           </div>
+          <span class="rooms__flow-arrow" aria-hidden="true">→</span>
+          <div class="rooms__flow-step">
+            <div class="rooms__flow-icon" aria-hidden="true">🤝</div>
+            <p class="rooms__flow-title">2. Meet in person</p>
+            <p class="rooms__flow-desc">Show up and play — everyone there has the same good intention you do, not just a casual hangout.</p>
+          </div>
+          <span class="rooms__flow-arrow" aria-hidden="true">→</span>
+          <div class="rooms__flow-step">
+            <div class="rooms__flow-icon" aria-hidden="true">❤️</div>
+            <p class="rooms__flow-title">3. Show your interest</p>
+            <p class="rooms__flow-desc">Afterward, IRL shows you everyone who was there. Tap Interested on anyone you clicked with.</p>
+          </div>
+          <span class="rooms__flow-arrow" aria-hidden="true">→</span>
+          <div class="rooms__flow-step">
+            <div class="rooms__flow-icon" aria-hidden="true">✓</div>
+            <p class="rooms__flow-title">4. Connect easily</p>
+            <p class="rooms__flow-desc">If it's mutual, IRL shares your socials with each other — no awkward first move.</p>
+          </div>
+        </div>
 
-          <div class="room-card">
-            <div class="room-card__visual" style="background:linear-gradient(135deg, var(--glow), var(--navy-700));">
-              <span class="room-card__icon" aria-hidden="true">🎾</span>
-            </div>
-            <div class="room-card__body">
-              <span class="room-card__day">Sunday · 9:00 AM</span>
-              <h4 class="room-card__title">Pickleball Meetup</h4>
-              <p class="room-card__desc">Beginner-friendly courts in Thao Dien — paddles provided, just bring shoes.</p>
-              <span class="room-card__meta">8 going · Thao Dien</span>
-            </div>
-            <div class="room-card__actions">
-              <button type="button" class="btn btn--ghost" data-room-action="pass">Not this time</button>
-              <button type="button" class="btn btn--primary" data-room-action="join">I'm interested</button>
-            </div>
-            <span class="room-card__joined-badge">✓ You're in</span>
-          </div>
-
-          <div class="rooms-stack__empty" id="roomsEmpty" hidden>
-            <p>You're all caught up — new Rooms open every week.</p>
-            <button type="button" class="btn btn--ghost" id="roomsReset">See them again</button>
-          </div>
+        <div class="rooms__activities">
+          <span class="rooms__activity">🏸 Badminton</span>
+          <span class="rooms__activity">🎾 Pickleball</span>
+        </div>
+        <div class="rooms__cta">
+          <a href="#waitlist" class="btn btn--primary">Apply for Early Access</a>
         </div>
       </div>
     </div>

@@ -4,7 +4,7 @@
 :root{
   /* --- core palette: TrailMate-style — navy primary, light background --- */
   --navy-950:#0F172A;   /* Rich Navy — primary text / darkest surface */
-  --navy-900:#0D3B66;   /* Primary Navy — brand, primary actions, dark surfaces */
+  --navy-900:#123054;   /* Primary Navy — brand, primary actions, dark surfaces (sits smoothly between navy-950 and navy-700, matching the .eyebrow chip's gradient tone) */
   --navy-700:#14487d;   /* interpolated mid step */
   --navy-500:#3B82F6;   /* Active Blue — lightest step of the navy ramp */
   --white:#ffffff;
@@ -14,15 +14,22 @@
   --muted:#475569;      /* Slate — secondary text/icons */
   --muted-on-navy:#c9d6e8;
 
-  /* --- accents: orange for highlights/CTA variations, green for success/positive states --- */
-  --accent:#F59E0B;      /* Energetic Orange */
-  --accent-dark:#d97706;
-  --glow:#10B981;        /* Fresh Green */
+  /* --- minimalist palette: navy, white, black only — no orange/green.
+     Accent is the same darker navy as the .eyebrow chip (navy-700 ->
+     navy-950), not the brighter navy-500 — so every "accent" moment reads
+     as the same navy tone as chips like "Why IRL", not a separate blue. --- */
+  --accent:#14487d;      /* same as --navy-700 — for solid surfaces (buttons,
+                             icon fills) that carry white content on top */
+  --accent-dark:#0F172A; /* same as --navy-950 */
+  --glow:#3B82F6;        /* same as --navy-500 — lighter, so it stays visible
+                             as TEXT or a small dot sitting directly on a dark
+                             navy surface, where the darker --accent would
+                             blend in instead of standing out */
 
   /* --- card surfaces (solid, no blur/translucency) --- */
   --glass-light-bg:#ffffff;
   --glass-light-border:#E2E8F0;
-  --glass-navy-bg:#0D3B66;
+  --glass-navy-bg:#123054;
   --glass-navy-border:#14487d;
 
   /* --- geometry --- */
@@ -86,7 +93,7 @@ input{font:inherit;}
 .skip-link:focus{left:0;}
 
 /* utility */
-.text-accent{color:var(--accent);}
+.text-accent{color:var(--glow);}
 .visually-hidden{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;}
 
 /* scroll-reveal base state (JS adds .is-visible) */
@@ -109,16 +116,16 @@ input{font:inherit;}
   background:var(--glass-light-bg);
   border:1px solid var(--glass-light-border);
   border-radius:var(--radius-lg);
-  box-shadow:0 8px 32px rgba(13,59,102,0.10);
+  box-shadow:0 8px 32px rgba(18,48,84,0.10);
 }
 .glass--navy{
   background:var(--glass-navy-bg);
   border:1px solid var(--glass-navy-border);
   color:#fff;
-  box-shadow:0 20px 60px rgba(15,23,42,0.45), 0 0 0 1px rgba(16,185,129,0.12);
+  box-shadow:0 20px 60px rgba(15,23,42,0.45), 0 0 0 1px rgba(20,72,125,0.12);
 }
 .glass--glow{
-  box-shadow:0 8px 32px rgba(13,59,102,0.10), 0 0 0 1px rgba(16,185,129,0.25), 0 0 32px rgba(16,185,129,0.12);
+  box-shadow:0 8px 32px rgba(18,48,84,0.10), 0 0 0 1px rgba(20,72,125,0.25), 0 0 32px rgba(20,72,125,0.12);
 }
 
 /* floating liquid-navy blobs used behind glass panels for depth/energy */
@@ -158,17 +165,34 @@ input{font:inherit;}
 .btn--primary{
   background:linear-gradient(135deg, var(--accent), var(--accent-dark));
   color:#fff;
-  box-shadow:0 10px 30px rgba(245,158,11,0.35);
+  box-shadow:0 10px 30px rgba(20,72,125,0.35);
 }
-.btn--primary:hover{transform:translateY(-3px);box-shadow:0 16px 36px rgba(245,158,11,0.45);}
+.btn--primary:hover{transform:translateY(-3px);box-shadow:0 16px 36px rgba(20,72,125,0.45);}
 .btn--primary:active{transform:translateY(-1px);}
 
-.btn--ghost{
-  background:rgba(13,59,102,0.06);
+/* .btn--primary's navy gradient reads fine on a light background, but
+   disappears into the dark-navy waitlist panel it sits on there — that
+   gets an inverted white button instead, so there's always a clear
+   light/dark boundary around the CTA */
+.waitlist__panel .btn--primary{
+  background:#fff;
   color:var(--navy-900);
-  border:1px solid rgba(13,59,102,0.14);
+  box-shadow:0 10px 24px rgba(0,0,0,0.3);
 }
-.btn--ghost:hover{background:rgba(13,59,102,0.1);transform:translateY(-2px);}
+.waitlist__panel .btn--primary:hover{
+  background:var(--off-white);
+}
+
+/* the hero card's own primary buttons sit on a plain white panel, where
+   the default dark-navy .btn--primary gradient already reads perfectly
+   fine, so no override is needed here — they just use the shared style. */
+
+.btn--ghost{
+  background:rgba(18,48,84,0.06);
+  color:var(--navy-900);
+  border:1px solid rgba(18,48,84,0.14);
+}
+.btn--ghost:hover{background:rgba(18,48,84,0.1);transform:translateY(-2px);}
 
 .btn--on-navy{
   background:rgba(255,255,255,0.1);
@@ -204,7 +228,7 @@ input{font:inherit;}
 .nav__inner{display:flex;align-items:center;justify-content:space-between;gap:20px;}
 .nav__logo{
   display:inline-flex;align-items:baseline;gap:3px;
-  font-weight:900;font-size:calc(22px * var(--text-scale));letter-spacing:-.02em;color:#fff;
+  font-weight:900;font-size:calc(22px * var(--text-scale));letter-spacing:-.02em;color:var(--navy-900);
 }
 .nav__logo::after{
   content:"";
@@ -214,8 +238,8 @@ input{font:inherit;}
   margin-bottom:2px;
 }
 .nav__links{display:flex;gap:32px;}
-.nav__links a{font-weight:600;font-size:calc(15px * var(--text-scale));color:rgba(255,255,255,0.85);transition:color .2s ease;}
-.nav__links a:hover{color:#fff;}
+.nav__links a{font-weight:600;font-size:calc(15px * var(--text-scale));color:var(--muted);transition:color .2s ease;}
+.nav__links a:hover{color:var(--navy-900);}
 .nav__actions{display:flex;align-items:center;gap:14px;}
 
 /* The "Join Waitlist" button appears twice in markup (once inside nav__links
@@ -230,7 +254,7 @@ input{font:inherit;}
   padding:8px;
 }
 .nav__toggle span{
-  width:22px;height:2px;background:#fff;border-radius:2px;
+  width:22px;height:2px;background:var(--navy-900);border-radius:2px;
   transition:transform .25s var(--ease), opacity .25s var(--ease);
 }
 .nav__toggle[aria-expanded="true"] span:nth-child(1){transform:translateY(7px) rotate(45deg);}
@@ -246,7 +270,7 @@ input{font:inherit;}
     background:#ffffff;
     border:1px solid var(--glass-light-border);
     border-radius:var(--radius-md);
-    box-shadow:0 20px 50px rgba(13,59,102,0.18);
+    box-shadow:0 20px 50px rgba(18,48,84,0.18);
     transform:translateY(-12px);
     opacity:0;
     visibility:hidden;
@@ -259,7 +283,7 @@ input{font:inherit;}
   /* the dropdown itself is always a solid white panel (unlike the nav bar
      behind it), so its links stay dark regardless of scroll state */
   .nav__links a{padding:12px 14px;border-radius:10px;color:var(--muted);}
-  .nav__links a:hover{background:rgba(13,59,102,0.05);color:var(--navy-900);}
+  .nav__links a:hover{background:rgba(18,48,84,0.05);color:var(--navy-900);}
   .nav__links .btn--primary{display:inline-flex;margin-top:8px;} /* show the CTA inside the mobile dropdown */
   .nav__toggle{display:flex;}
   .nav__actions .btn--small{display:none;} /* desktop CTA hidden — mobile uses the one above instead */
@@ -275,17 +299,10 @@ input{font:inherit;}
   position:relative;
   overflow-x:hidden;
   padding:140px 0 100px; /* extra top space reserves room for the fixed nav overlapping this section */
-  /* full-bleed lifestyle photo behind the hero, darkened more on the left
-     (where the headline sits) and lighter toward the right (where the
-     translucent glass demo card already provides its own contrast) —
-     reuses the same rooftop-golden-hour photo as .who__collage .c1 */
-  background:
-    linear-gradient(115deg, rgba(15,23,42,0.88) 0%, rgba(15,23,42,0.68) 38%, rgba(15,23,42,0.45) 65%, rgba(15,23,42,0.58) 100%),
-    url("https://images.unsplash.com/photo-1731789247154-f0461bfaf269?auto=format&fit=crop&w=1600&q=75") center/cover no-repeat;
-  /* multiply-blends the navy gradient into the photo instead of just
-     compositing over it, so even the lighter/right-hand part of the photo
-     reads as navy-graded rather than showing its raw warm sunset tones */
-  background-blend-mode:multiply;
+  /* section-alt (not off-white) so the hero alternates properly with the
+     "Why IRL" section right after it — both were off-white, so they were
+     blending into one block with no visible seam between them */
+  background:var(--section-alt);
 }
 
 .hero__inner{
@@ -307,45 +324,36 @@ input{font:inherit;}
   font-size:calc(13.5px * var(--text-scale));font-weight:800;letter-spacing:.08em;text-transform:uppercase;
   color:#fff;
   background:linear-gradient(135deg, var(--navy-700), var(--navy-950));
-  border:1px solid rgba(245,158,11,0.45);
+  border:1px solid rgba(20,72,125,0.45);
   padding:12px 24px;border-radius:100px;
   margin-bottom:20px;
-  box-shadow:0 10px 26px rgba(13,59,102,0.28), 0 0 0 1px rgba(245,158,11,0.14), inset 0 1px 0 rgba(255,255,255,0.12);
+  box-shadow:0 10px 26px rgba(18,48,84,0.28), 0 0 0 1px rgba(20,72,125,0.14), inset 0 1px 0 rgba(255,255,255,0.12);
 }
 .eyebrow::before{
   content:"";width:8px;height:8px;flex-shrink:0;border-radius:50%;
-  background:var(--accent);
-  box-shadow:0 0 10px var(--accent);
+  background:var(--glow);
+  box-shadow:0 0 10px var(--glow);
 }
 .hero h1{
   font-size:clamp(calc(32px * var(--text-scale)), 4.2vw, calc(56px * var(--text-scale)));
   line-height:1.04;
   font-weight:900;
   letter-spacing:-.03em;
-  color:#fff;
+  color:var(--navy-900);
 }
 .hero__subhead{
   margin-top:22px;
   font-size:clamp(calc(16px * var(--text-scale)), 1.6vw, calc(19px * var(--text-scale)));
-  color:rgba(255,255,255,0.88);
+  color:var(--muted);
   max-width:520px;
 }
 .hero__ctas{
   display:flex;flex-wrap:wrap;gap:14px;
   margin-top:34px;
 }
-/* the ghost CTA sits directly on the hero's photo background, not a white
-   card, so it needs the light/on-color treatment instead of .btn--ghost's
-   default dark-on-light styling */
-.hero__ctas .btn--ghost{
-  background:rgba(255,255,255,0.14);
-  color:#fff;
-  border:1px solid rgba(255,255,255,0.4);
-}
-.hero__ctas .btn--ghost:hover{background:rgba(255,255,255,0.22);}
 .hero__microcopy{
   margin-top:18px;
-  font-size:calc(13px * var(--text-scale));color:rgba(255,255,255,0.75);font-weight:600;
+  font-size:calc(13px * var(--text-scale));color:var(--muted);font-weight:600;
 }
 
 /* hero visual: a single glass "app" card, right-aligned, sitting in normal
@@ -356,7 +364,7 @@ input{font:inherit;}
   position:relative;
   z-index:1;
 }
-.hero__card{position:relative;z-index:1;padding:30px;} /* sit above .hero__photo-slot's decorative circle, which comes first in the DOM */
+.hero__card{position:relative;z-index:1;padding:30px;}
 .hero__card--main{
   width:82%;
   margin-left:auto;
@@ -365,45 +373,34 @@ input{font:inherit;}
   border-radius:var(--radius-lg);
   box-shadow:0 20px 50px rgba(15,23,42,0.35);
   position:relative;
-  /* the photo (absolutely positioned, see .hero__match-photo) always
-     covers this whole card no matter how tall the content below makes
-     it — .hero__match-body just sits on top, pinned to the bottom so
-     there's still a clear stretch of photo showing up top */
-  display:flex;
-  flex-direction:column;
-  justify-content:flex-end;
-  /* aspect-ratio (not a fixed min-height px value) so the card's
-     proportions stay consistent and scale smoothly at any viewport width,
-     instead of jumping between fixed heights at each breakpoint — which
-     is what made the photo's crop look inconsistent/"broken" in between
-     them. Content can still push the card taller than this if it needs
-     to (e.g. a long Matched-screen confirm box on a very narrow card). */
-  aspect-ratio:3/4;
-  min-height:400px;
 }
-.hero__card-label{font-size:calc(14px * var(--text-scale));font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--glow);}
+.hero__card-label{font-size:calc(14px * var(--text-scale));font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--accent);}
 .hero__card-title{
   font-size:calc(28px * var(--text-scale));font-weight:800;margin-top:6px;
-  color:#fff;
+  color:var(--navy-900);
   /* line-height set explicitly (rather than inheriting body's 1.5) so it
-     matches the multiplier used in min-height below exactly. Reserves only
-     a small buffer over one line (not a full 2nd line) — all three sample
-     plans fit on one line at this width, so a big reservation just left a
-     dead gap; this still absorbs minor rendering variance without it. */
+     matches the multiplier used in min-height below exactly. All three
+     sample plans are now kept short enough to reliably fit 1 line, so
+     this only reserves a small buffer — not a full 2nd line, which just
+     left a dead gap under every 1-line title. */
   line-height:1.3;
   min-height:calc(28px * var(--text-scale) * 1.3 * 1.1);
 }
 
-/* --- hero__card--main: a single sample "match" card. The photo fills the
-   entire card (position:absolute, inset:0) with a bottom-up scrim behind
-   it, and every other element — badge, name, bio, plan, quote, actions —
-   sits on top of it as ordinary content, rather than the photo being
-   confined to its own boxed-off area. --- */
+/* --- hero__card--main: a single sample "match" card. The photo is a
+   fixed-height block up top (with a bottom scrim so the name/tag overlaid
+   on it stay legible); everything else — label, plan, quote, actions —
+   sits in a plain white panel below it, in normal flow. --- */
 .hero__match-photo{
-  position:absolute;inset:0;
-  z-index:0;
+  position:relative;
+  height:280px;
+  overflow:hidden;
   background-size:cover;
-  background-position:center;
+  /* all three sample photos are tall portraits with the face in the top
+     third — "center" (the vertical midpoint) was cropping straight
+     through/above the face on this wide, short box. Anchoring near the
+     top instead keeps the face in frame for all three samples. */
+  background-position:center 18%;
   /* default photo (matches the "Hà, 24" sample below) so the card looks
      right even before script.js swaps it on "Not this week" — Unsplash
      photo, free to use under the Unsplash license (unsplash.com/license) */
@@ -412,18 +409,17 @@ input{font:inherit;}
 .hero__match-photo::after{
   content:"";
   position:absolute;inset:0;
-  /* concentrated in the bottom ~35% so the content block stays compact
-     and most of the photo shows clearly above it */
-  background:linear-gradient(to top, rgba(15,23,42,0.95) 0%, rgba(15,23,42,0.88) 22%, rgba(15,23,42,0.4) 38%, rgba(15,23,42,0) 55%);
+  background:linear-gradient(to top, rgba(15,23,42,0.85) 0%, rgba(15,23,42,0.35) 45%, rgba(15,23,42,0) 75%);
 }
 .hero__match-badge{
   position:absolute;top:14px;right:14px;z-index:2;
   background:#fff;color:var(--navy-900);
   font-size:calc(12.5px * var(--text-scale));font-weight:800;letter-spacing:.05em;text-transform:uppercase;
   padding:8px 15px;border-radius:100px;
-  box-shadow:0 4px 14px rgba(13,59,102,0.16);
+  box-shadow:0 4px 14px rgba(18,48,84,0.16);
 }
 .hero__match-id{
+  position:absolute;left:20px;bottom:36px;z-index:2;
   display:flex;align-items:center;gap:8px;
 }
 .hero__match-id strong{font-size:calc(21px * var(--text-scale));font-weight:800;letter-spacing:-.01em;color:#fff;}
@@ -433,29 +429,34 @@ input{font:inherit;}
   background:var(--glow);color:#fff;
   font-size:11px;font-weight:900;
 }
-.hero__match-tag{margin-top:1px;font-size:calc(14.5px * var(--text-scale));color:rgba(255,255,255,0.8);}
+.hero__match-tag{
+  position:absolute;left:20px;bottom:14px;z-index:2;right:20px;
+  font-size:calc(14.5px * var(--text-scale));color:rgba(255,255,255,0.85);
+}
 
-.hero__match-body{position:relative;z-index:1;padding:10px 22px 16px;}
+/* the actual text/button panel: solid white, so it's always easy to read
+   regardless of what the photo above it looks like */
+/* min-height as a belt-and-suspenders guarantee on top of the per-line
+   reservations below (title/quote) — pins the whole white panel to one
+   height so cycling "Not this week" through the sample profiles never
+   makes the card grow or shrink */
+.hero__match-body{background:#fff;padding:20px 22px 22px;min-height:210px;}
 .hero__card-quote{
-  font-size:calc(16px * var(--text-scale));font-style:italic;color:var(--muted-on-navy);
+  font-size:calc(16px * var(--text-scale));font-style:italic;color:var(--muted);
   margin-top:8px;line-height:1.55;
-  /* small buffer, not a full 2nd line — all three sample quotes fit on one
-     line at this width, so a bigger reservation just left a dead gap */
+  /* small buffer, not a full 2nd line — all three sample quotes are now
+     kept short enough to reliably fit 1 line at this width */
   min-height:calc(16px * var(--text-scale) * 1.55 * 1.1);
 }
 
-/* the hero__card--main demo: "Not this week" / "I'd be up for this" */
+/* the hero__card--main demo: "Not this week" / "I'd be up for this" —
+   the ghost button uses .btn--ghost's normal dark-on-light styling
+   unchanged, since the panel behind it is plain white now */
 .hero__card-actions{
   display:flex;gap:10px;flex-wrap:wrap;
   margin-top:12px;
 }
 .hero__card-actions .btn{font-size:calc(15px * var(--text-scale));padding:12px 24px;}
-.hero__card-actions .btn--ghost{
-  background:rgba(255,255,255,0.1);
-  color:#fff;
-  border-color:rgba(255,255,255,0.22);
-}
-.hero__card-actions .btn--ghost:hover{background:rgba(255,255,255,0.18);}
 /* The hero card's three states (browsing / matched / confirmed) are
    layered in the same grid cell instead of stacked in normal flow, so the
    container's height is always the tallest of the three, and swapping
@@ -478,36 +479,26 @@ input{font:inherit;}
   margin-top:14px;
   padding:20px 22px;
   border-radius:var(--radius-md);
-  background:rgba(255,255,255,0.1);
-  border:1px solid rgba(255,255,255,0.2);
+  background:var(--section-alt);
+  border:1px solid var(--glass-light-border);
 }
 .hero__confirm-details{display:flex;flex-direction:column;gap:4px;}
 .hero__confirm-label{
   font-size:calc(11px * var(--text-scale));font-weight:800;letter-spacing:.05em;text-transform:uppercase;
-  color:rgba(255,255,255,0.6);
+  color:var(--muted);
 }
-.hero__confirm-time{font-size:calc(17px * var(--text-scale));font-weight:700;color:#fff;}
+.hero__confirm-time{font-size:calc(17px * var(--text-scale));font-weight:700;color:var(--navy-900);}
 .hero__confirm-place{font-size:calc(14.5px * var(--text-scale));font-weight:700;color:var(--accent);}
 
 .hero__cheer{
   margin-top:12px;
   padding:12px 16px;
   border-radius:var(--radius-sm);
-  background:rgba(16,185,129,0.22);
-  border:1px solid rgba(16,185,129,0.4);
+  background:rgba(20,72,125,0.08);
+  border:1px solid rgba(20,72,125,0.2);
   text-align:center;
 }
-.hero__cheer strong{font-size:calc(15px * var(--text-scale));color:#fff;}
-
-/* <!-- placeholder: photo of two people meeting at a rooftop bar in Saigon, warm evening light --> */
-.hero__photo-slot{
-  position:absolute;right:-6%;bottom:-8%;
-  width:150px;height:150px;
-  border-radius:50%;
-  background:linear-gradient(135deg, rgba(255,255,255,0.5), rgba(16,185,129,0.25));
-  border:1px solid rgba(255,255,255,0.6);
-  z-index:1;
-}
+.hero__cheer strong{font-size:calc(15px * var(--text-scale));color:var(--navy-900);}
 
 @media (max-width:940px){
   .hero__inner{grid-template-columns:1fr;text-align:center;}
@@ -544,6 +535,7 @@ input{font:inherit;}
     min-height:calc(14.5px * var(--text-scale) * 1.55 * 1.1);
   }
   .hero__card-actions .btn{font-size:calc(14px * var(--text-scale));padding:11px 20px;}
+  .hero__match-body{min-height:175px;}
 }
 @media (max-width:520px){
   .hero{padding:120px 0 70px;}
@@ -578,6 +570,7 @@ input{font:inherit;}
     font-size:calc(10.5px * var(--text-scale));padding:9px 4px;
     overflow:hidden;text-overflow:ellipsis;
   }
+  .hero__match-body{min-height:150px;}
 }
 
 /* ======================================================================
@@ -641,19 +634,24 @@ section:not(.hero){border-top:1px solid var(--navy-900);}
 .timeline__step:hover .timeline__content{transform:translateY(-4px);}
 .timeline__day{
   font-size:calc(13px * var(--text-scale));font-weight:800;letter-spacing:.06em;text-transform:uppercase;
-  color:var(--glow);
+  color:var(--accent);
 }
-.timeline__title{font-size:calc(20px * var(--text-scale));font-weight:800;line-height:1.3;margin-top:10px;}
-.timeline__desc{font-size:calc(15.5px * var(--text-scale));color:var(--muted-on-navy);margin-top:10px;line-height:1.6;}
+.timeline__title{font-size:calc(20px * var(--text-scale));font-weight:800;line-height:1.3;margin-top:10px;color:var(--navy-900);}
+.timeline__desc{font-size:calc(15.5px * var(--text-scale));color:var(--muted);margin-top:10px;line-height:1.6;}
 
-/* the weekend card — the whole point of the week — gets the accent treatment */
+/* the weekend card — the whole point of the week — stands out as the one
+   dark navy card in a row of white ones, with a bigger footprint/shadow
+   to draw the eye straight to it */
 .timeline__step--weekend .timeline__content{
-  background:linear-gradient(160deg, rgba(245,158,11,0.94), rgba(217,119,6,0.94));
-  border:1px solid rgba(255,255,255,0.25);
-  color:#fff;
+  background:var(--glass-navy-bg);
+  border:1px solid var(--glass-navy-border);
+  box-shadow:0 24px 56px rgba(15,23,42,0.35);
+  transform:scale(1.03);
 }
-.timeline__step--weekend .timeline__day,
-.timeline__step--weekend .timeline__desc{color:rgba(255,255,255,0.85);}
+.timeline__step:hover.timeline__step--weekend .timeline__content{transform:scale(1.03) translateY(-4px);}
+.timeline__step--weekend .timeline__day{color:var(--glow);}
+.timeline__step--weekend .timeline__title{color:#fff;}
+.timeline__step--weekend .timeline__desc{color:var(--muted-on-navy);}
 
 @media (max-width:640px){
   .timeline{gap:14px;}
@@ -681,7 +679,7 @@ section:not(.hero){border-top:1px solid var(--navy-900);}
 .chat-demo__mock{padding:28px;}
 .chat-demo__head{
   display:flex;justify-content:space-between;align-items:center;gap:12px;
-  padding-bottom:16px;border-bottom:1px solid rgba(13,59,102,0.1);
+  padding-bottom:16px;border-bottom:1px solid rgba(18,48,84,0.1);
 }
 .chat-demo__head strong{font-size:calc(15px * var(--text-scale));color:var(--navy-900);display:block;}
 .chat-demo__head span{font-size:calc(13px * var(--text-scale));color:var(--muted);}
@@ -693,17 +691,17 @@ section:not(.hero){border-top:1px solid var(--navy-900);}
   max-width:75%;border-radius:16px;padding:10px 15px;margin:12px 0 0;
   font-size:calc(14.5px * var(--text-scale));
 }
-.chat-demo__bubble--them{background:rgba(13,59,102,0.06);color:var(--ink);}
+.chat-demo__bubble--them{background:rgba(18,48,84,0.06);color:var(--ink);}
 .chat-demo__bubble--me{background:var(--navy-900);color:#fff;margin-left:auto;}
 .chat-demo__timecard{
-  border:1px solid rgba(13,59,102,0.12);border-radius:14px;
+  border:1px solid rgba(18,48,84,0.12);border-radius:14px;
   padding:16px;margin-top:18px;background:#fff;
 }
 .chat-demo__timecard strong{font-size:calc(14.5px * var(--text-scale));color:var(--navy-900);}
 .chat-demo__row{display:flex;gap:10px;margin-top:14px;}
 .chat-demo__row .btn{flex:1;}
 .chat-demo__confirmed{
-  background:rgba(16,185,129,0.14);border:1px solid rgba(16,185,129,0.35);
+  background:rgba(20,72,125,0.14);border:1px solid rgba(20,72,125,0.35);
   border-radius:14px;padding:16px;margin-top:18px;
 }
 .chat-demo__confirmed strong{display:block;font-size:calc(14.5px * var(--text-scale));color:var(--navy-900);margin-bottom:4px;}
@@ -733,7 +731,7 @@ section:not(.hero){border-top:1px solid var(--navy-900);}
   background:linear-gradient(135deg, var(--accent), var(--accent-dark));
   color:#fff;font-size:calc(27px * var(--text-scale));font-weight:800;
   margin-bottom:26px;
-  box-shadow:0 10px 24px rgba(245,158,11,0.3);
+  box-shadow:0 10px 24px rgba(20,72,125,0.3);
 }
 .feature-card h3{font-size:calc(23px * var(--text-scale));font-weight:800;color:var(--navy-900);}
 .feature-card p{margin-top:14px;font-size:calc(16px * var(--text-scale));color:var(--muted);}
@@ -782,10 +780,10 @@ section:not(.hero){border-top:1px solid var(--navy-900);}
    readable) over a real photo, hotlinked from Unsplash (free license, no
    attribution required — https://unsplash.com/license). Swap the url(...)
    for your own photography whenever it's ready; keep the gradient in front. */
-.who__collage .c1{background-image:linear-gradient(180deg, rgba(13,59,102,0.4) 0%, rgba(15,23,42,0.85) 100%), url("https://images.unsplash.com/photo-1731789247154-f0461bfaf269?auto=format&fit=crop&w=800&q=70"); /* rooftop coworking terrace at golden hour */}
-.who__collage .c2{background-image:linear-gradient(180deg, rgba(13,59,102,0.4) 0%, rgba(15,23,42,0.85) 100%), url("https://images.unsplash.com/photo-1626224583764-f87db24ac4ea?auto=format&fit=crop&w=800&q=70"); /* badminton player mid-rally on an indoor court */}
-.who__collage .c3{background-image:linear-gradient(180deg, rgba(13,59,102,0.4) 0%, rgba(15,23,42,0.85) 100%), url("https://images.unsplash.com/photo-1604881990409-b9f246db39da?auto=format&fit=crop&w=800&q=70"); /* couple sharing a dinner date */}
-.who__collage .c4{background-image:linear-gradient(180deg, rgba(13,59,102,0.4) 0%, rgba(15,23,42,0.85) 100%), url("https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=800&q=70"); /* early-morning gym session */}
+.who__collage .c1{background-image:linear-gradient(180deg, rgba(18,48,84,0.4) 0%, rgba(15,23,42,0.85) 100%), url("https://images.unsplash.com/photo-1731789247154-f0461bfaf269?auto=format&fit=crop&w=800&q=70"); /* rooftop coworking terrace at golden hour */}
+.who__collage .c2{background-image:linear-gradient(180deg, rgba(18,48,84,0.4) 0%, rgba(15,23,42,0.85) 100%), url("https://images.unsplash.com/photo-1626224583764-f87db24ac4ea?auto=format&fit=crop&w=800&q=70"); /* badminton player mid-rally on an indoor court */}
+.who__collage .c3{background-image:linear-gradient(180deg, rgba(18,48,84,0.4) 0%, rgba(15,23,42,0.85) 100%), url("https://images.unsplash.com/photo-1604881990409-b9f246db39da?auto=format&fit=crop&w=800&q=70"); /* couple sharing a dinner date */}
+.who__collage .c4{background-image:linear-gradient(180deg, rgba(18,48,84,0.4) 0%, rgba(15,23,42,0.85) 100%), url("https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=800&q=70"); /* early-morning gym session */}
 
 @media (max-width:900px){
   .who__inner{grid-template-columns:1fr;text-align:center;}
@@ -799,7 +797,7 @@ section:not(.hero){border-top:1px solid var(--navy-900);}
 .rooms{
   position:relative;
   margin-top:64px;padding-top:48px;padding-bottom:8px;
-  border-top:1px solid rgba(13,59,102,0.08);
+  border-top:1px solid rgba(18,48,84,0.08);
 }
 /* full-viewport-width band (rather than just the .container's own width)
    so Rooms reads as visually distinct from the section-alt band above it,
@@ -823,91 +821,64 @@ section:not(.hero){border-top:1px solid var(--navy-900);}
 }
 .rooms__head p{margin-top:12px;font-size:calc(16px * var(--text-scale));color:var(--muted);}
 
-.rooms-stack{
+/* the "join -> meet -> show interest -> connect" flow — explains the
+   actual mechanic (an interest, expressed after the fact, has to be
+   mutual before IRL connects the two of you) rather than leaving the
+   "I'm interested" button on the Room cards below to imply it does
+   that by itself (it's only the RSVP to attend). Icon-circle + arrow
+   layout, kept strictly navy/white/black (no accent-color coding per
+   step, unlike the colorful reference this was modeled on). */
+.rooms__flow{
   display:flex;
-  flex-wrap:wrap;
-  justify-content:center;
   align-items:flex-start;
-  gap:36px;
-  width:100%;
-  max-width:760px;
-  margin:48px auto 0;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:8px 4px;
+  max-width:980px;
+  margin:36px auto 0;
+}
+.rooms__flow-step{
+  display:flex;flex-direction:column;align-items:center;text-align:center;
+  width:200px;
+}
+.rooms__flow-icon{
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;
+  width:56px;height:56px;border-radius:50%;
+  background:var(--accent);color:#fff;
+  font-size:22px;
+  margin-bottom:14px;
+}
+.rooms__flow-title{font-weight:800;font-size:calc(15.5px * var(--text-scale));color:var(--navy-900);}
+.rooms__flow-desc{margin-top:6px;font-size:calc(13.5px * var(--text-scale));color:var(--muted);line-height:1.5;}
+.rooms__flow-arrow{
+  flex-shrink:0;align-self:flex-start;
+  margin-top:16px;
+  font-size:20px;font-weight:700;
+  color:var(--glass-navy-border);
 }
 
-.room-card{
-  position:relative;
-  width:min(300px, 100%);
-  display:flex;flex-direction:column;
-  border-radius:var(--radius-lg);
-  overflow:hidden;
+@media (max-width:860px){
+  .rooms__flow-arrow{display:none;}
+  .rooms__flow{gap:28px 20px;}
+}
+@media (max-width:720px){
+  .rooms__flow-step{width:100%;max-width:320px;}
+}
+
+/* simple activity chips — the flow above already explains the mechanic,
+   so this is just a plain list of what's on, not an interactive demo */
+.rooms__activities{
+  display:flex;flex-wrap:wrap;justify-content:center;gap:14px;
+  margin-top:40px;
+}
+.rooms__activity{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:12px 22px;border-radius:100px;
   background:var(--glass-navy-bg);
   border:1px solid var(--glass-navy-border);
-  box-shadow:0 20px 50px rgba(15,23,42,0.35);
-  /* spread the cards out like a fanned hand rather than stacking them —
-     each one tilted a couple of degrees, alternating direction, and
-     straightening/lifting on hover */
-  transform:rotate(var(--fan-rotate, 0deg));
-  transition:transform .35s var(--ease), opacity .35s var(--ease), box-shadow .35s var(--ease);
+  color:#fff;font-weight:700;font-size:calc(15px * var(--text-scale));
 }
-.room-card:nth-child(odd){--fan-rotate:-4deg;}
-.room-card:nth-child(even){--fan-rotate:4deg;margin-top:22px;}
-.room-card:hover{transform:rotate(0deg) translateY(-8px);box-shadow:0 28px 60px rgba(15,23,42,0.4);z-index:1;}
-
-.room-card.is-leaving-pass{transform:translate(-20px, 40px) rotate(-8deg);opacity:0;}
-.room-card.is-joined .room-card__actions{display:none;}
-
-@media (max-width:520px){
-  .room-card:nth-child(even){margin-top:0;}
-}
-
-.room-card__visual{
-  height:42%;flex-shrink:0;
-  display:flex;align-items:center;justify-content:center;
-}
-.room-card__icon{font-size:calc(60px * var(--text-scale));}
-.room-card__body{padding:22px 24px 8px;color:#fff;}
-.room-card__day{
-  font-size:calc(12px * var(--text-scale));font-weight:800;letter-spacing:.05em;text-transform:uppercase;
-  color:var(--glow);
-}
-.room-card__title{font-size:calc(21px * var(--text-scale));font-weight:800;margin-top:8px;}
-.room-card__desc{margin-top:8px;font-size:calc(14px * var(--text-scale));color:var(--muted-on-navy);line-height:1.5;}
-.room-card__meta{display:block;margin-top:10px;font-size:calc(12.5px * var(--text-scale));color:var(--muted-on-navy);font-weight:600;}
-.room-card__actions{
-  display:flex;gap:10px;
-  padding:16px 24px 22px;
-  margin-top:auto;
-}
-.room-card__actions .btn{flex:1;padding:12px 16px;font-size:calc(14px * var(--text-scale));}
-.room-card__actions .btn--ghost{background:rgba(255,255,255,0.1);color:#fff;border-color:rgba(255,255,255,0.22);}
-.room-card__actions .btn--ghost:hover{background:rgba(255,255,255,0.18);}
-
-.room-card__joined-badge{
-  position:absolute;top:16px;right:16px;
-  background:var(--accent);color:#fff;
-  font-size:calc(12px * var(--text-scale));font-weight:800;
-  padding:6px 14px;border-radius:100px;
-  opacity:0;transform:scale(.8);
-  transition:opacity .2s ease, transform .2s ease;
-}
-.room-card.is-joined .room-card__joined-badge{opacity:1;transform:scale(1);}
-
-.rooms-stack__empty{
-  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;
-  text-align:center;padding:32px;
-  width:min(300px, 100%);
-  border-radius:var(--radius-lg);
-  background:var(--glass-light-bg);
-  border:1px solid var(--glass-light-border);
-}
-.rooms-stack__empty p{color:var(--muted);font-size:calc(15px * var(--text-scale));max-width:260px;}
-
-@media (max-width:520px){
-  .room-card:nth-child(odd),
-  .room-card:nth-child(even){--fan-rotate:0deg;margin-top:0;} /* flat stack, no fan, on narrow screens */
-  .room-card__body{padding:18px 20px 4px;}
-  .room-card__actions{padding:14px 20px 18px;}
-}
+.rooms__cta{margin-top:28px;text-align:center;}
 
 /* ======================================================================
    11. WAITLIST
@@ -961,7 +932,7 @@ section:not(.hero){border-top:1px solid var(--navy-900);}
 }
 .waitlist-form input[type="email"]::placeholder{color:rgba(255,255,255,0.55);}
 .waitlist-form input[type="email"]:focus{
-  outline:none;border-color:var(--glow);box-shadow:0 0 0 3px rgba(16,185,129,0.25);
+  outline:none;border-color:var(--glow);box-shadow:0 0 0 3px rgba(20,72,125,0.25);
 }
 .waitlist__error{
   position:relative;z-index:1;
@@ -977,8 +948,8 @@ section:not(.hero){border-top:1px solid var(--navy-900);}
   display:none;
   padding:20px 24px;
   border-radius:var(--radius-md);
-  background:rgba(16,185,129,0.14);
-  border:1px solid rgba(16,185,129,0.35);
+  background:rgba(20,72,125,0.14);
+  border:1px solid rgba(20,72,125,0.35);
   margin-top:8px;
 }
 .waitlist__success.is-active{display:block;}
@@ -1011,7 +982,7 @@ section:not(.hero){border-top:1px solid var(--navy-900);}
 }
 .footer__brand-logo::after{
   content:"";width:8px;height:8px;border-radius:50%;
-  background:var(--accent);align-self:flex-end;margin-bottom:3px;
+  background:var(--glow);align-self:flex-end;margin-bottom:3px;
 }
 .footer__tagline{margin-top:10px;font-size:calc(14.5px * var(--text-scale));max-width:280px;}
 .footer__bottom{

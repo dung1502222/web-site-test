@@ -7,8 +7,7 @@
      4. Waitlist form (client-side only — see comment before wiring a backend)
      5. Hero demo card ("Not this week" / "I'd be up for this")
      6. Friday chat demo (suggest another time / confirm)
-     7. Rooms — spread cards ("Not this time" / "I'm interested")
-     8. Footer year
+     7. Footer year
 ============================================================================ */
 
 (function () {
@@ -201,14 +200,14 @@
       {
         name: 'Hà, 24', tag: 'Research · morning runs · tiny cafés',
         plan: 'Morning run · Sunday, Sala',
-        quote: '“Best conversations happen mid-run, not over dinner.”',
+        quote: '“Best chats happen mid-run, not over dinner.”',
         photo: 'https://images.unsplash.com/photo-1542719018-ee28cbdc71ee?auto=format&fit=crop&crop=faces&w=600&q=75',
         confirmTime: 'Sun · 6:30 AM',
         confirmPlace: 'Riverside path, Sala'
       },
       {
         name: 'Mai, 26', tag: 'Marketing · galleries · badminton',
-        plan: 'Art exhibition · Saturday afternoon',
+        plan: 'Art exhibition · Saturday',
         quote: '“I read every placard. Slow museum dates only.”',
         photo: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&crop=faces&w=600&q=75',
         confirmTime: 'Sat · 3:00 PM',
@@ -216,7 +215,7 @@
       },
       {
         name: 'An, 25', tag: 'Product · board games · playlists',
-        plan: 'Board games · Sunday evening',
+        plan: 'Board games · Sunday',
         quote: '“Fair warning: I’m competitive at board games.”',
         photo: 'https://images.unsplash.com/photo-1546961329-78bef0414d7c?auto=format&fit=crop&crop=faces&w=600&q=75',
         confirmTime: 'Sun · 7:00 PM',
@@ -275,58 +274,7 @@
   }
 
   /* --------------------------------------------------------------------
-     7. ROOMS — spread cards
-     Room cards (see .room-card in index.html) are laid out side by side
-     rather than stacked, so each one responds independently: "Not this
-     time" fades that card out; "I'm interested" flashes a "You're in"
-     badge and leaves it in place. Once every card has been passed on, an
-     empty state offers to bring them all back. Nothing here is submitted
-     anywhere — it's illustrating the product's own Rooms feature.
-  -------------------------------------------------------------------- */
-  var roomsStack = document.getElementById('roomsStack');
-
-  if (roomsStack) {
-    var roomCards = Array.prototype.slice.call(roomsStack.querySelectorAll('.room-card'));
-    var roomsEmpty = document.getElementById('roomsEmpty');
-    var roomsReset = document.getElementById('roomsReset');
-
-    function updateRoomsEmptyState() {
-      var anyVisible = roomCards.some(function (card) { return !card.hidden; });
-      if (roomsEmpty) roomsEmpty.hidden = anyVisible;
-    }
-
-    roomsStack.addEventListener('click', function (e) {
-      var btn = e.target.closest('[data-room-action]');
-      if (!btn) return;
-      var card = btn.closest('.room-card');
-      var action = btn.getAttribute('data-room-action');
-
-      if (action === 'join') {
-        card.classList.add('is-joined');
-      } else if (action === 'pass') {
-        card.classList.add('is-leaving-pass');
-        setTimeout(function () {
-          card.hidden = true;
-          updateRoomsEmptyState();
-        }, 380);
-      }
-    });
-
-    if (roomsReset) {
-      roomsReset.addEventListener('click', function () {
-        roomCards.forEach(function (card) {
-          card.hidden = false;
-          card.classList.remove('is-leaving-pass', 'is-joined');
-        });
-        updateRoomsEmptyState();
-      });
-    }
-
-    updateRoomsEmptyState();
-  }
-
-  /* --------------------------------------------------------------------
-     8. FOOTER YEAR
+     7. FOOTER YEAR
   -------------------------------------------------------------------- */
   var yearEl = document.getElementById('year');
   if (yearEl) yearEl.textContent = new Date().getFullYear();

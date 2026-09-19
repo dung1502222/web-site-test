@@ -6,8 +6,7 @@
      3. Parallax on background blobs
      4. Waitlist form (client-side only — see comment before wiring a backend)
      5. Hero demo card ("Not this week" / "I'd be up for this")
-     6. Friday chat demo (suggest another time / confirm)
-     7. Footer year
+     6. Footer year
 ============================================================================ */
 
 (function () {
@@ -252,29 +251,7 @@
   }
 
   /* --------------------------------------------------------------------
-     6. FRIDAY CHAT DEMO
-     A small illustrative chat: "Another time" tweaks the suggested slot,
-     "Confirm" swaps the time-card for a confirmed state. Purely a demo of
-     the product's Friday "commit to a real plan" step — nothing is sent.
-  -------------------------------------------------------------------- */
-  var chatTimeCard = document.getElementById('chatTimeCard');
-  var chatTimeText = document.getElementById('chatTimeText');
-  var chatConfirmed = document.getElementById('chatConfirmed');
-  var chatSuggestLater = document.getElementById('chatSuggestLater');
-  var chatConfirm = document.getElementById('chatConfirm');
-
-  if (chatTimeCard && chatSuggestLater && chatConfirm) {
-    chatSuggestLater.addEventListener('click', function () {
-      chatTimeText.textContent = 'How about Sunday · 10:30 AM instead?';
-    });
-    chatConfirm.addEventListener('click', function () {
-      chatTimeCard.hidden = true;
-      chatConfirmed.hidden = false;
-    });
-  }
-
-  /* --------------------------------------------------------------------
-     7. FOOTER YEAR
+     6. FOOTER YEAR
   -------------------------------------------------------------------- */
   var yearEl = document.getElementById('year');
   if (yearEl) yearEl.textContent = new Date().getFullYear();

@@ -1,322 +1,424 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>IRL — Dating for people with full lives</title>
-<meta name="description" content="IRL is a weekly dating app for Ho Chi Minh City. Fewer, curated introductions that turn into real dates — not another inbox to manage.">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Odds: first impressions should be in person</title>
+<meta name="description" content="Odds is a weekly dating app for Ho Chi Minh City. A few reviewed introductions, one plan, and a real meeting by the weekend.">
 
-<!-- ======================================================================
-     GOOGLE FONT — Inter. Swap the href / font-family in style.css to change type.
-====================================================================== -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Inter:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
 
-<!-- Styles live in style.css, next to this file -->
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
+<a class="skip" href="#main">Skip to content</a>
 
-<a class="skip-link" href="#main">Skip to content</a>
-
-<!-- ==========================================================================
-     NAV
-========================================================================== -->
-<header class="nav">
-  <div class="nav__inner container">
-    <a href="#top" class="nav__logo">IRL</a>
-
-    <nav class="nav__links" id="navLinks">
-      <a href="#different">Why IRL</a>
-      <a href="#how-it-works">How it Works</a>
-      <a href="#waitlist" class="btn btn--primary btn--small" style="margin-top:8px;">Apply Now</a>
-    </nav>
-
-    <div class="nav__actions">
-      <a href="#waitlist" class="btn btn--primary btn--small">Apply Now</a>
-      <button class="nav__toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="navLinks">
-        <span></span><span></span><span></span>
-      </button>
+<header class="wrap">
+  <nav aria-label="Main">
+    <a class="logo" href="#top" aria-label="Odds home"><span class="mark" aria-hidden="true"><i></i><i></i></span>Odds</a>
+    <div class="links">
+      <a href="#different">Why Odds</a>
+      <a href="#activities">Activities</a>
+      <a href="#how">How a week works</a>
+      <a href="#rooms">Group rooms</a>
+      <a class="btn sm" href="#join">Apply for early access</a>
     </div>
-  </div>
+  </nav>
 </header>
 
 <main id="main">
+<!-- HERO -->
+<section class="hero wrap" id="top">
+  <h1>First impressions<br>should be <span class="accent">in person</span>.</h1>
+  <div class="hero-row">
+    <div>
+      <p class="lede">Odds is a weekly dating app for Ho Chi Minh City. You get a few reviewed introductions, agree on one plan, and meet by the weekend.</p>
+      <p class="lede">A morning run, a museum, a game of pickleball. Something real to do together, instead of weeks of texting first.</p>
+      <div class="ctas">
+        <a class="btn" href="#join">Apply for early access</a>
+        <a class="link" href="#how">See how a week works</a>
+      </div>
+      <div class="fine"><span><b>Free</b> to join</span><span><b>500</b> founding members</span><span>Launching in <b>Saigon</b></span></div>
+    </div>
 
-  <!-- ==========================================================================
-       1. HERO
-  ========================================================================== -->
-  <section class="hero" id="top">
-    <div class="container hero__inner">
-      <div class="hero__content reveal">
-        <p class="eyebrow">Now building in Ho Chi Minh City</p>
-        <h1>First impression<br><span class="text-accent">should be in person.</span></h1>
-        <p class="hero__subhead">
-          Dating doesn't need more matches. It needs more people actually worth meeting.
-          IRL gives you a few reviewed introductions each week, enough time to get
-          comfortable, and a clear path to a real weekend date.
-        </p>
-        <div class="hero__ctas">
-          <a href="#waitlist" class="btn btn--primary btn--large">Apply for Early Access</a>
-          <a href="#how-it-works" class="btn btn--ghost">See how it works ↓</a>
+    <div class="stack" aria-label="Example plans on Odds this weekend">
+      <div class="ticket t-back">
+        <div class="main t-peek">
+          <div class="t-top"><div class="logo"><span class="mark"><i></i><i></i></span>Odds</div><small>Sat, 10:00 AM with Minh</small></div>
+          <div class="t-title">Museum visit</div>
+          <p class="t-where">Museum of Fine Arts, District 1</p>
+          <div class="t-foot"><div><span>With</span>Minh, 27</div><div><span>Duration</span>1.5 hrs</div></div>
+          <svg class="t-icon" aria-hidden="true" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><rect x="10" y="12" width="80" height="58" rx="3"/><path d="M18 60 L40 32 L56 48 L70 28 L82 60"/><circle cx="66" cy="24" r="6" fill="currentColor" stroke="none"/></svg>
+        </div><div class="stub"><div class="admit">Admit</div><div class="n">2</div><div class="d">Sat<br>26 Sep</div></div>
+      </div>
+      <div class="ticket t-mid">
+        <div class="main">
+          <div class="t-top"><div class="logo"><span class="mark"><i></i><i></i></span>Odds</div><span class="pill">Plan confirmed</span></div>
+          <div class="t-title">Pickleball</div>
+          <div class="t-who">You and Khoa, 29</div>
+          <p class="t-quote">“A little competition breaks the ice.”</p>
+          <div class="t-meta">
+            <div><span>When</span>Sat, 5:30 PM</div>
+            <div><span>Where</span>Courts in Thảo Điền</div>
+            <div><span>Chat before</span>Not needed</div>
+          </div>
+        </div><div class="stub"><div class="admit">Admit</div><div class="n">2</div><div class="d">Sat<br>26 Sep</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT MAKES ODDS DIFFERENT -->
+<section class="diff sec" id="different">
+  <div class="wrap">
+    <div class="diff-head">
+      <h2>Fewer matches.<br><span class="accent">Better odds.</span></h2>
+      <p class="intro">Three decisions that change how dating feels, before, during, and after the date. Meeting sooner shouldn’t mean trusting blindly.</p>
+    </div>
+
+    <div class="diff-grid">
+      <article class="feat">
+        <div class="stage">Before you meet</div>
+        <h3>Reviewed profiles</h3>
+        <p>Reviewed, not rated. We check that every profile is real, complete, and gives you enough context to feel comfortable meeting. Trust is built up front, not after a week of back-and-forth texting.</p>
+        <div class="demo-wrap"><div class="demo">
+          <div class="pf-top">
+            <div class="av">H</div>
+            <div><b>Hà, 24</b><span>Research, morning runs</span></div>
+            <span class="badge"><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2 6.3l2.5 2.4L10 3.2" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Reviewed</span>
+          </div>
+          <ul class="checks">
+            <li><svg viewBox="0 0 18 18" aria-hidden="true"><circle cx="9" cy="9" r="9" fill="#1B2B5E"/><path d="M5 9.3l2.6 2.5L13 6.4" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Real person, photos checked</li>
+            <li><svg viewBox="0 0 18 18" aria-hidden="true"><circle cx="9" cy="9" r="9" fill="#1B2B5E"/><path d="M5 9.3l2.6 2.5L13 6.4" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Profile complete</li>
+            <li><svg viewBox="0 0 18 18" aria-hidden="true"><circle cx="9" cy="9" r="9" fill="#1B2B5E"/><path d="M5 9.3l2.6 2.5L13 6.4" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Says what she’s looking for</li>
+          </ul>
+        </div></div>
+      </article>
+
+      <article class="feat">
+        <div class="stage">During your week</div>
+        <h3>Fewer, better introductions</h3>
+        <p>We trade endless swiping for a handful of intentional introductions each week. Fewer people, chosen with more care, so each one gets your full attention.</p>
+        <div class="demo-wrap"><div class="demo">
+          <div class="demo-top"><b>This week</b><span>4 introductions</span></div>
+          <div class="intros">
+            <div class="ip"><div class="av">H</div><div><b>Hà, 24</b><span>Runs at Sala</span></div></div>
+            <div class="ip"><div class="av ink">M</div><div><b>Minh, 27</b><span>Museums, film</span></div></div>
+            <div class="ip"><div class="av line">K</div><div><b>Khoa, 29</b><span>Pickleball</span></div></div>
+            <div class="ip"><div class="av wash">L</div><div><b>Linh, 26</b><span>Pottery, books</span></div></div>
+          </div>
+          <div class="demo-foot"><s>Hundreds of profiles to swipe</s><span>Next round Monday</span></div>
+        </div></div>
+      </article>
+
+      <article class="feat">
+        <div class="stage">After the date</div>
+        <h3>See again, not just matched</h3>
+        <p>After you meet, a private, low-pressure “See again?” lets you show real interest without the awkwardness of asking first.</p>
+        <div class="demo-wrap"><div class="demo">
+          <span class="sa-small">After Sunday’s run at Sala</span>
+          <b class="sa-q">See Hà again?</b>
+          <div class="yn" role="group" aria-label="See Hà again?">
+            <button class="btn sm ghost" type="button" aria-pressed="false" data-sa="yes">Yes, see again</button>
+            <button class="btn sm ghost" type="button" aria-pressed="false" data-sa="no">Not this time</button>
+          </div>
+          <p class="sa-done" aria-live="polite"></p>
+          <p class="lock"><svg viewBox="0 0 16 16" aria-hidden="true"><rect x="3" y="7" width="10" height="8" rx="2" fill="#5B6070"/><path d="M5.5 7V5a2.5 2.5 0 0 1 5 0v2" fill="none" stroke="#5B6070" stroke-width="1.6"/></svg>Private. Hà only finds out if you both say yes.</p>
+        </div></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ACTIVITIES -->
+<section class="dark sec" id="activities">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>Dinner is one option.<br>There are better ones.</h2>
+      <p>Every plan on Odds starts from something you would enjoy anyway. Doing something side by side gives you easy things to talk about and a natural way to say goodbye.</p>
+    </div>
+
+    <div class="mosaic">
+      <!-- RUN: featured -->
+      <article class="tile t-run">
+        <div class="tile-top"><span class="cat">Move</span><span class="when">Sun, 6:30 AM</span></div>
+        <div class="art">
+          <svg viewBox="0 0 560 360" style="overflow:visible" role="img" aria-label="Map of a 5 km riverside running route">
+            <path d="M620 70 C 470 100, 420 200, 312 250 S 130 310, 40 420" fill="none" stroke="rgba(255,255,255,.09)" stroke-width="84" stroke-linecap="round"/>
+            <text x="352" y="286" fill="rgba(255,255,255,.45)" font-family="Lora, Georgia, serif" font-style="italic" font-size="17" transform="rotate(-24 352 286)">Saigon River</text>
+            <circle cx="88" cy="74" r="40" fill="rgba(255,255,255,.1)"/>
+            <circle cx="88" cy="74" r="24" fill="rgba(255,255,255,.18)"/>
+            <path d="M540 34 C 410 60, 360 150, 262 196 S 90 250, 24 330" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-dasharray="1 11"/>
+            <g font-family="Inter, Arial, sans-serif" font-weight="700" font-size="13" text-anchor="middle">
+              <circle cx="429" cy="79" r="14" fill="#fff"/><text x="429" y="84" fill="#1B2B5E">1</text>
+              <circle cx="333" cy="151" r="14" fill="#fff"/><text x="333" y="156" fill="#1B2B5E">2</text>
+              <circle cx="229" cy="211" r="14" fill="#fff"/><text x="229" y="216" fill="#1B2B5E">3</text>
+              <circle cx="118" cy="256" r="14" fill="#fff"/><text x="118" y="261" fill="#1B2B5E">4</text>
+            </g>
+            <circle cx="540" cy="34" r="9" fill="#fff"/>
+            <circle cx="540" cy="34" r="18" fill="none" stroke="#fff" stroke-opacity=".4" stroke-width="2"/>
+            <text x="558" y="82" fill="#fff" font-family="Inter, Arial, sans-serif" font-size="14" text-anchor="end">Start, Sala park</text>
+            <circle cx="24" cy="330" r="10" fill="#1B2B5E" stroke="#fff" stroke-width="3"/>
+            <text x="46" y="335" fill="#fff" font-family="Inter, Arial, sans-serif" font-size="14">Finish, coffee after</text>
+          </svg>
         </div>
-        <p class="hero__microcopy">Free to join · Founding cohort of 500 · Launching in Saigon</p>
+        <div class="tile-bot">
+          <h3>Morning run</h3>
+          <p class="where">Riverside path, Sala, Thủ Đức</p>
+          <p class="why">Talking is easier side by side.</p>
+          <div class="facts"><span>5 km</span><span>Easy pace</span><span>Water at the pier</span><span>Coffee optional</span></div>
+        </div>
+      </article>
+
+      <!-- MUSEUM -->
+      <article class="tile t-museum">
+        <div class="tile-top"><span class="cat">Look</span><span class="when">Sat, 10:00 AM</span></div>
+        <div class="art">
+          <svg viewBox="0 0 260 120" role="img" aria-label="Framed artworks on a gallery wall">
+            <rect x="8" y="10" width="64" height="84" fill="none" stroke="#000" stroke-width="3"/>
+            <circle cx="40" cy="44" r="16" fill="#1B2B5E"/><rect x="18" y="68" width="44" height="16" fill="#000"/>
+            <rect x="86" y="10" width="92" height="52" fill="none" stroke="#000" stroke-width="3"/>
+            <path d="M96 54 L122 24 L140 44 L152 32 L168 54 Z" fill="#000"/>
+            <rect x="86" y="72" width="40" height="40" fill="#1B2B5E"/>
+            <rect x="138" y="72" width="40" height="40" fill="none" stroke="#000" stroke-width="3"/><path d="M146 104 L170 80" stroke="#1B2B5E" stroke-width="4"/>
+            <rect x="192" y="18" width="58" height="76" fill="none" stroke="#1B2B5E" stroke-width="3"/>
+            <path d="M200 40 H242 M200 52 H236 M200 64 H242 M200 76 H228" stroke="#000" stroke-width="3"/>
+          </svg>
+        </div>
+        <div class="tile-bot">
+          <h3>Museum visit</h3>
+          <p class="where">Museum of Fine Arts, District 1</p>
+          <p class="why">Something to talk about from minute one.</p>
+        </div>
+      </article>
+
+      <!-- PICKLEBALL -->
+      <article class="tile t-pickle">
+        <div class="tile-top"><span class="cat">Move</span><span class="when">Sat, 5:30 PM</span></div>
+        <div class="art">
+          <svg viewBox="0 0 260 120" role="img" aria-label="Pickleball court from above with a ball in play">
+            <rect x="6" y="8" width="248" height="104" fill="none" stroke="#fff" stroke-width="2.5"/>
+            <path d="M92 8 V112 M168 8 V112 M6 60 H92 M168 60 H254" stroke="#fff" stroke-width="2" stroke-opacity=".6"/>
+            <path d="M130 2 V118" stroke="#fff" stroke-width="4"/>
+            <path d="M48 92 Q 120 -10 206 36" fill="none" stroke="#fff" stroke-width="2" stroke-dasharray="3 7" stroke-linecap="round"/>
+            <circle cx="210" cy="38" r="12" fill="#1B2B5E" stroke="#fff" stroke-width="2.5"/>
+            <circle cx="206" cy="34" r="2" fill="#fff"/><circle cx="214" cy="36" r="2" fill="#fff"/><circle cx="208" cy="43" r="2" fill="#fff"/>
+          </svg>
+        </div>
+        <div class="tile-bot">
+          <h3>Pickleball</h3>
+          <p class="where">Courts in Thảo Điền</p>
+          <p class="why">A little competition breaks the ice.</p>
+        </div>
+      </article>
+
+      <!-- POTTERY: wide -->
+      <article class="tile t-pottery">
+        <div class="tile-top"><span class="cat">Make</span><span class="when">Sat, 2:00 PM</span></div>
+        <div class="tile-bot">
+          <h3>Pottery class</h3>
+          <p class="where">Studio in District 3, two hours</p>
+          <p class="why">Messy hands, low pressure, and you each take something home.</p>
+        </div>
+        <div class="art">
+          <svg viewBox="0 0 320 170" role="img" aria-label="Handmade pots of different shapes on a pottery wheel">
+            <ellipse cx="96" cy="150" rx="84" ry="14" fill="#000"/>
+            <rect x="88" y="150" width="16" height="20" fill="#000"/>
+            <path d="M64 146 C 44 120, 48 88, 70 72 C 78 66, 78 52, 72 40 H120 C 114 52, 114 66, 122 72 C 144 88, 148 120, 128 146 Z" fill="#1B2B5E"/>
+            <path d="M70 40 H122" stroke="#1B2B5E" stroke-width="8" stroke-linecap="round"/>
+            <path d="M200 112 H272 C 272 140, 256 152, 236 152 C 216 152, 200 140, 200 112 Z" fill="#000"/>
+            <path d="M206 100 C 206 70, 222 58, 236 58 C 250 58, 266 70, 266 100 Z" fill="none" stroke="#1B2B5E" stroke-width="4"/>
+            <rect x="282" y="104" width="30" height="48" rx="6" fill="#1B2B5E"/>
+            <path d="M312 116 C 324 116, 324 138, 312 138" fill="none" stroke="#1B2B5E" stroke-width="5"/>
+            <path d="M166 152 H318" stroke="#000" stroke-width="3"/>
+          </svg>
+        </div>
+      </article>
+
+      <!-- BOOKS -->
+      <article class="tile t-books small">
+        <div class="tile-top"><span class="cat">Look</span><span class="when">Sun, 9:00 AM</span></div>
+        <div class="art">
+          <svg viewBox="0 0 220 96" role="img" aria-label="A row of book spines">
+            <rect x="10" y="26" width="22" height="70" fill="#000"/><rect x="36" y="12" width="16" height="84" fill="#1B2B5E"/>
+            <rect x="56" y="34" width="26" height="62" fill="none" stroke="#000" stroke-width="3"/><rect x="86" y="20" width="18" height="76" fill="#000"/>
+            <rect x="108" y="40" width="30" height="56" fill="#1B2B5E"/><rect x="118" y="52" width="10" height="3" fill="#fff"/>
+            <path d="M146 96 L162 30 L180 34 L166 96 Z" fill="#000"/>
+            <rect x="184" y="22" width="20" height="74" fill="none" stroke="#1B2B5E" stroke-width="3"/>
+          </svg>
+        </div>
+        <div class="tile-bot"><h3>Book street walk</h3><p class="where">Nguyễn Văn Bình, District 1</p></div>
+      </article>
+
+      <!-- BADMINTON -->
+      <article class="tile t-badminton small">
+        <div class="tile-top"><span class="cat">Move</span><span class="when">Fri, 7:00 PM</span></div>
+        <div class="art">
+          <svg viewBox="0 0 220 96" role="img" aria-label="A shuttlecock in flight">
+            <path d="M10 84 Q 80 -6 150 44" fill="none" stroke="#fff" stroke-width="2" stroke-dasharray="3 7" stroke-linecap="round"/>
+            <g transform="rotate(38 176 52)">
+              <path d="M158 30 L194 30 L184 64 L168 64 Z" fill="none" stroke="#fff" stroke-width="2.5" stroke-linejoin="round"/>
+              <path d="M170 30 L172 64 M182 30 L180 64" stroke="#fff" stroke-width="1.5"/>
+              <path d="M166 64 H186 A10 10 0 0 1 166 64 Z" fill="#fff"/>
+            </g>
+          </svg>
+        </div>
+        <div class="tile-bot"><h3>Badminton</h3><p class="where">Indoor courts, District 7</p></div>
+      </article>
+
+      <!-- PHOTO WALK -->
+      <article class="tile t-photo small">
+        <div class="tile-top"><span class="cat">Look</span><span class="when">Sat, 4:30 PM</span></div>
+        <div class="art">
+          <svg viewBox="0 0 220 96" role="img" aria-label="City skyline seen through a camera viewfinder">
+            <path d="M40 8 H24 V24 M180 8 H196 V24 M40 88 H24 V72 M180 88 H196 V72" fill="none" stroke="#fff" stroke-width="3"/>
+            <path d="M50 78 V56 H66 V42 H80 V78 M86 78 V30 H98 V78 M104 78 V14 L112 8 L120 14 V78 M126 78 V48 H144 V78 M150 78 V38 H166 V78" fill="none" stroke="#fff" stroke-width="2.5"/>
+            <path d="M44 78 H176" stroke="#fff" stroke-width="2.5"/>
+            <circle cx="110" cy="48" r="5" fill="#fff"/>
+          </svg>
+        </div>
+        <div class="tile-bot"><h3>Photo walk</h3><p class="where">Golden hour, post office to the river</p></div>
+      </article>
+
+      <!-- DINNER: muted -->
+      <article class="tile t-dinner small">
+        <div class="tile-top"><span class="cat">Eat</span><span class="when">Any evening</span></div>
+        <div class="art">
+          <svg viewBox="0 0 220 96" role="img" aria-label="A plate with fork and knife">
+            <circle cx="110" cy="48" r="40" fill="none" stroke="#3A3D48" stroke-width="2.5"/>
+            <circle cx="110" cy="48" r="26" fill="none" stroke="#3A3D48" stroke-width="2"/>
+            <path d="M52 12 V84 M46 12 V32 Q52 40 58 32 V12" fill="none" stroke="#3A3D48" stroke-width="2.5" stroke-linecap="round"/>
+            <path d="M168 84 V12 Q180 26 172 50 H168" fill="none" stroke="#3A3D48" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <div class="tile-bot"><h3>Dinner</h3><p class="where">Still here, if you both want it.</p></div>
+      </article>
+    </div>
+
+    <div class="legend"><span><b>Move</b> to talk side by side</span><span><b>Look</b> at something together</span><span><b>Make</b> something to take home</span></div>
+  </div>
+</section>
+
+<!-- RHYTHM / NO CHAT -->
+<section class="sec" id="how">
+  <div class="wrap">
+    <div class="rhythm-head">
+      <div>
+        <h2>No chat needed.<br>One week,<br>one rhythm.</h2>
+        <p class="intro">Every week on Odds ends with a real plan, not a longer conversation. You say you’re curious, pick a time and a place together, and meet. There is no inbox to keep alive.</p>
+        <div class="nots">
+          <div><s>A chat inbox to manage</s><em>A plan instead</em></div>
+          <div><s>“We should hang out sometime”</s><em>A confirmed time and place</em></div>
+          <div><s>Weeks of texting before a coffee</s><em>A meeting by the weekend</em></div>
+        </div>
       </div>
 
-      <!-- A single live demo card: "Not this week" cycles a sample
-           introduction, "I'd be up for this" reveals the mutual-curiosity
-           note — see script.js. -->
-
-      <div class="hero__visual reveal reveal--delay-2">
-        <!-- A single sample introduction. Photos are stock photos from
-             Unsplash (free license, hotlinked — https://unsplash.com/license),
-             standing in for the kind of headshot a real profile would use. -->
-        <div class="hero__card hero__card--main">
-          <div class="hero__match-photo" id="heroMatchPhoto">
-            <span class="hero__match-badge">This week</span>
-            <div class="hero__match-id">
-              <strong id="heroDemoName">Hà, 24</strong>
-              <span class="hero__verified-badge" title="Reviewed profile" aria-label="Reviewed profile">✓</span>
+      <div class="phone" aria-label="Odds app, Friday plan screen">
+        <div class="screen">
+          <div class="status" aria-hidden="true"><span>9:41</span><span class="island"></span><span>5G</span></div>
+          <div class="appbar"><div class="logo"><span class="mark" aria-hidden="true"><i></i><i></i></span>Odds</div><span class="daytag">Friday</span></div>
+          <div class="scr-body">
+            <div class="scr-h">You’re both curious.<br>Lock in the plan.</div>
+            <p class="scr-sub">Pick one time and one place. Hà will confirm or suggest another option.</p>
+            <div class="match"><div class="av">H</div><div><b>Hà, 24</b><span>Research, morning runs, tiny cafés</span></div></div>
+            <div class="opt-label">When</div>
+            <div class="opts" data-group="when">
+              <button class="opt" type="button" aria-pressed="true"><b>Sun, 6:30 AM</b>Before the heat</button>
+              <button class="opt" type="button" aria-pressed="false"><b>Sat, 10:00 AM</b>Late morning</button>
             </div>
-            <p class="hero__match-tag" id="heroDemoTag">Research · morning runs · tiny cafés</p>
-          </div>
-          <div class="hero__match-body">
-            <!-- The three states below are stacked on top of one another
-                 (see .hero__screens in style.css) so the card's height stays
-                 constant no matter which one is showing — switching states
-                 never resizes the card. Once "I'd be up for this" is picked,
-                 the profile screen (and "Not this week") is gone for good:
-                 you don't go back to browsing after you've matched. -->
-            <div class="hero__screens">
-              <div class="hero__screen is-active" id="heroScreenProfile">
-                <p class="hero__card-label">Someone for this weekend</p>
-                <p class="hero__card-title" id="heroDemoPlan">Morning run · Sunday, Sala</p>
-                <p class="hero__card-quote" id="heroDemoQuote">"Best chats happen mid-run, not over dinner."</p>
-                <div class="hero__card-actions">
-                  <button type="button" class="btn btn--ghost btn--small" id="heroNotThisWeek">Not this week</button>
-                  <button type="button" class="btn btn--primary btn--small" id="heroUpForThis">I'd be up for this</button>
-                </div>
-              </div>
-              <div class="hero__screen" id="heroScreenMatched">
-                <p class="hero__card-label">You're both curious</p>
-                <div class="hero__confirm-row">
-                  <div class="hero__confirm-details">
-                    <span class="hero__confirm-label">Lock in the plan</span>
-                    <span class="hero__confirm-time" id="heroConfirmTime">Sun · 6:30 AM</span>
-                    <span class="hero__confirm-place" id="heroConfirmPlace">Riverside path, Sala</span>
-                  </div>
-                  <button type="button" class="btn btn--primary btn--small" id="heroConfirmBtn">Confirm</button>
-                </div>
-              </div>
-              <div class="hero__screen" id="heroScreenConfirmed">
-                <p class="hero__card-label">Locked in</p>
-                <p class="hero__card-title" id="heroConfirmedTime">Sun · 6:30 AM</p>
-                <p class="hero__card-quote" id="heroConfirmedPlace">Riverside path, Sala</p>
-                <div class="hero__cheer">
-                  <strong>Have a great time. 🎉</strong>
-                </div>
-              </div>
+            <div class="opt-label">Where</div>
+            <div class="opts" data-group="where">
+              <button class="opt" type="button" aria-pressed="true"><b>Run at Sala</b>Riverside path</button>
+              <button class="opt" type="button" aria-pressed="false"><b>Fine Arts Museum</b>District 1</button>
             </div>
+            <div class="share"><div><b>Share plan with a friend</b><span>They’ll see where and when you’re meeting</span></div><i class="tog" aria-hidden="true"></i></div>
+            <p class="nochat">There’s no message box on Odds. Just the plan.</p>
+            <button class="confirm" type="button">Confirm plan</button>
           </div>
         </div>
       </div>
     </div>
-  </section>
 
-  <!-- ==========================================================================
-       2. WHAT MAKES IRL DIFFERENT
-  ========================================================================== -->
-  <section class="different" id="different">
-    <div class="container">
-      <div class="section-head reveal">
-        <span class="eyebrow eyebrow--center">Why IRL</span>
-        <h2>What makes IRL different</h2>
-        <p>Three decisions that change what dating feels like — before, during, and after the date. Meeting sooner shouldn't mean trusting blindly.</p>
-      </div>
-
-      <div class="features">
-        <div class="feature-card glass reveal">
-          <div class="feature-card__icon">✓</div>
-          <h3>Reviewed Profiles</h3>
-          <p>Reviewed, not rated. We check that profiles are real, complete, and give someone enough context to feel comfortable meeting — so trust is built upfront, not earned after a week of back-and-forth texting.</p>
+    <div class="week">
+      <div class="week-top"><h3>Your week on Odds</h3><p>The same rhythm, every week</p></div>
+      <div class="grid">
+        <div class="day">Mon</div><div class="day">Tue</div><div class="day">Wed</div><div class="day">Thu</div><div class="day">Fri</div><div class="day">Sat</div><div class="day">Sun</div><div class="day next">Next Mon</div>
+        <div class="bar b1">
+          <span class="d-lbl">Monday to Thursday</span>
+          <b>Meet your introductions</b>
+          <p>Tell Odds what you’re looking for. See a handful of reviewed profiles and tap “I’d be up for this” on anyone you’re curious about.</p>
+          <span class="sc">Nothing clicked by Thursday? A second round goes out.</span>
         </div>
-        <div class="feature-card glass reveal reveal--delay-1">
-          <div class="feature-card__icon">◆</div>
-          <h3>Fewer, Better Introductions</h3>
-          <p>We trade infinite swiping for a handful of intentional introductions a week — quality curation over endless scroll.</p>
-        </div>
-        <div class="feature-card glass reveal reveal--delay-2">
-          <div class="feature-card__icon">↻</div>
-          <h3>See Again, Not Just Matched</h3>
-          <p>After you meet, a private, low-pressure "See Again?" lets you signal real interest — without the awkwardness of asking first.</p>
-        </div>
+        <div class="bar b2"><span class="d-lbl">Friday</span><b>Lock the plan</b><p>One time, one place, confirmed together.</p></div>
+        <div class="bar b3"><span class="d-lbl">Weekend</span><b>Meet in person</b><p>An actual plan, at an actual place, in your actual city. This is the whole point.</p></div>
+        <div class="bar b4"><span class="d-lbl">Next Monday</span><b>See again?</b><p>A private yes or no. If you both say yes, we help with the next plan.</p></div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- ==========================================================================
-       3. HOW IT WORKS — YOUR WEEK WITH IRL
-  ========================================================================== -->
-  <section class="how section-alt" id="how-it-works">
-    <div class="container">
-      <div class="section-head reveal">
-        <span class="eyebrow eyebrow--center">How it works</span>
-        <h2>Your week with IRL</h2>
-        <p>One rhythm, every week — designed to end in a real date, not a longer chat thread.</p>
-      </div>
-
-      <!-- Four phases, each its own full-width row: the whole "getting
-           matched" week (Mon–Thu) is summarized in one card, then Friday /
-           Weekend / After each get their own card below it. -->
-      <div class="timeline">
-        <div class="timeline__step reveal">
-          <div class="timeline__content glass">
-            <span class="timeline__day">Monday – Thursday</span>
-            <p class="timeline__title">Set your intention, meet your introductions</p>
-            <p class="timeline__desc">Tell IRL what you're looking for, then meet a handful of reviewed profiles — chosen with intention, not swiped through by the hundred. If you're both curious, a short window opens to get comfortable, and if nothing clicks by Thursday, a fresh Second Chance round goes out before the week is over.</p>
-          </div>
-        </div>
-        <div class="timeline__step reveal reveal--delay-1">
-          <div class="timeline__content glass">
-            <span class="timeline__day">Friday</span>
-            <p class="timeline__title">Commit to a real plan</p>
-            <p class="timeline__desc">Lock in a time. Figure out the place together. No more "we should hang out sometime."</p>
-          </div>
-        </div>
-        <div class="timeline__step timeline__step--weekend reveal reveal--delay-2">
-          <div class="timeline__content glass">
-            <span class="timeline__day">Weekend</span>
-            <p class="timeline__title">Meet in person</p>
-            <p class="timeline__desc">The whole point. An actual date, at an actual place, in your actual city.</p>
-          </div>
-        </div>
-        <div class="timeline__step reveal reveal--delay-3">
-          <div class="timeline__content glass">
-            <span class="timeline__day">After</span>
-            <p class="timeline__title">Answer "See Again?"</p>
-            <p class="timeline__desc">A private, low-pressure signal after the date — less guessing, a clearer sense of where things stand. If you both say yes, IRL helps you make the next plan.</p>
-          </div>
-        </div>
+<!-- GROUPS -->
+<section class="navysec sec" id="rooms">
+  <div class="wrap groups">
+    <div>
+      <h2>Not ready for<br>one-on-one?<br>Join a group.</h2>
+      <p class="intro">Rooms are small group activities, six to ten people, where everyone signed up hoping to meet someone. Show up, play, talk, and decide afterward.</p>
+      <div class="steps">
+        <div class="step"><span class="num">1</span><div><b>Join a room</b><p>Pick an activity this week. Small groups, never a crowd.</p></div></div>
+        <div class="step"><span class="num">2</span><div><b>Show up and take part</b><p>Everyone there has the same intention you do.</p></div></div>
+        <div class="step"><span class="num">3</span><div><b>Tap Interested</b><p>Afterward, Odds shows you who was there. Choose anyone you clicked with.</p></div></div>
+        <div class="step"><span class="num">4</span><div><b>Connect if it’s mutual</b><p>If they chose you too, Odds shares your socials. No awkward first move.</p></div></div>
       </div>
     </div>
-  </section>
-  <!-- ==========================================================================
-       4. ROOMS — the "join / meet / mutual interest / connect" flow explains
-       the mechanic; this is just a simple list of the activity types
-       available, plus a CTA into the waitlist.
-  ========================================================================== -->
-  <section class="section-alt" id="rooms">
-    <div class="container">
-      <div class="rooms reveal reveal--delay-3">
-        <div class="rooms__head">
-          <h3>Not ready for a 1:1?</h3>
-          <p>Join a Room instead — a small group activity where everyone showed up with the same good intention you did: to meet someone, not just to play.</p>
-        </div>
-
-        <div class="rooms__flow">
-          <div class="rooms__flow-step">
-            <div class="rooms__flow-icon" aria-hidden="true">📅</div>
-            <p class="rooms__flow-title">1. Join an activity</p>
-            <p class="rooms__flow-desc">Sign up for a Room — badminton, pickleball, whatever's on this week. Small groups, not a crowd.</p>
-          </div>
-          <span class="rooms__flow-arrow" aria-hidden="true">→</span>
-          <div class="rooms__flow-step">
-            <div class="rooms__flow-icon" aria-hidden="true">🤝</div>
-            <p class="rooms__flow-title">2. Meet in person</p>
-            <p class="rooms__flow-desc">Show up and play — everyone there has the same good intention you do, not just a casual hangout.</p>
-          </div>
-          <span class="rooms__flow-arrow" aria-hidden="true">→</span>
-          <div class="rooms__flow-step">
-            <div class="rooms__flow-icon" aria-hidden="true">❤️</div>
-            <p class="rooms__flow-title">3. Show your interest</p>
-            <p class="rooms__flow-desc">Afterward, IRL shows you everyone who was there. Tap Interested on anyone you clicked with.</p>
-          </div>
-          <span class="rooms__flow-arrow" aria-hidden="true">→</span>
-          <div class="rooms__flow-step">
-            <div class="rooms__flow-icon" aria-hidden="true">✓</div>
-            <p class="rooms__flow-title">4. Connect easily</p>
-            <p class="rooms__flow-desc">If it's mutual, IRL shares your socials with each other — no awkward first move.</p>
-          </div>
-        </div>
-
-        <div class="rooms__activities">
-          <span class="rooms__activity">🏸 Badminton</span>
-          <span class="rooms__activity">🎾 Pickleball</span>
-        </div>
-        <div class="rooms__cta">
-          <a href="#waitlist" class="btn btn--primary">Apply for Early Access</a>
-        </div>
+    <div>
+      <div class="rooms-top"><h3>Rooms this week</h3><span>3 open near you</span></div>
+      <div class="room">
+        <div class="l"><h4>Sunday run club</h4><div class="meta">Sala riverside, Sun 6:00 AM, 5 km</div>
+          <div class="dots" data-total="10" data-taken="7"></div></div>
+        <div class="r"><button class="btn navy" type="button" aria-pressed="false">Join room</button><small>Free</small></div>
       </div>
-    </div>
-  </section>
-
-  <!-- ==========================================================================
-       5. WAITLIST / SIGNUP
-  ========================================================================== -->
-  <section class="waitlist section-alt" id="waitlist">
-    <div class="container">
-      <div class="waitlist__panel glass glass--navy reveal">
-        <div class="blob blob--a" aria-hidden="true" data-parallax="0.04"></div>
-        <div class="blob blob--b" aria-hidden="true" data-parallax="0.07"></div>
-
-        <h2>Be part of the first 500.</h2>
-        <p class="waitlist__sub">Founding members get early access, priority curation, and a say in how IRL launches in Saigon.</p>
-
-        <form class="waitlist-form" id="waitlistForm" novalidate>
-          <label for="waitlistEmail" class="visually-hidden">Email address</label>
-          <input
-            type="email"
-            id="waitlistEmail"
-            name="email"
-            placeholder="you@email.com"
-            autocomplete="email"
-            required
-            aria-describedby="waitlistError"
-          >
-          <button type="submit" class="btn btn--primary" id="waitlistSubmit">Apply for the Founding Cohort</button>
-        </form>
-        <p class="waitlist__error" id="waitlistError" role="alert"></p>
-
-        <div class="waitlist__success" id="waitlistSuccess" role="status">
-          <strong>You're on the list. 🎉</strong>
-          <span>We'll email you the moment IRL opens up in Saigon.</span>
-        </div>
-
-        <p class="waitlist__reassurance">No spam. Just an invite when we launch in Saigon.</p>
+      <div class="room">
+        <div class="l"><h4>Museum afternoon</h4><div class="meta">Museum of Fine Arts, Sat 2:00 PM</div>
+          <div class="dots" data-total="8" data-taken="5"></div></div>
+        <div class="r"><button class="btn navy" type="button" aria-pressed="false">Join room</button><small>Entry 30k</small></div>
       </div>
+      <div class="room">
+        <div class="l"><h4>Pickleball doubles</h4><div class="meta">Thảo Điền courts, Sat 5:30 PM</div>
+          <div class="dots" data-total="8" data-taken="6"></div></div>
+        <div class="r"><button class="btn navy" type="button" aria-pressed="false">Join room</button><small>Court 60k</small></div>
+      </div>
+      <div class="tags"><em>Also this month</em><span>Badminton</span><span>Pottery</span><span>Book walks</span><span>Photo walks</span></div>
     </div>
-  </section>
+  </div>
+</section>
 
-
+<!-- JOIN -->
+<section class="join" id="join">
+  <div class="wrap join-grid">
+    <h2>Be one of<br>the first 500.</h2>
+    <div>
+      <p>Founding members get early access, priority introductions, and a say in which activities launch first in Saigon.</p>
+      <form class="field" novalidate>
+        <label class="sr" for="email">Email address</label>
+        <input id="email" type="email" placeholder="Your email address" autocomplete="email">
+        <button class="btn" type="submit">Apply for the founding cohort</button>
+      </form>
+      <small id="join-msg" aria-live="polite">We’ll only email you when Odds opens in Saigon.</small>
+      <div class="counter"><div class="track"><i></i></div><span><b>312</b> of 500 spots taken</span></div>
+    </div>
+  </div>
+</section>
 </main>
 
-<!-- ==========================================================================
-     FOOTER
-========================================================================== -->
-<footer class="footer">
-  <div class="container">
-    <div class="footer__top">
-      <div>
-        <p class="footer__brand-logo">IRL</p>
-        <p class="footer__tagline">Dating for people with full lives. Launching in Ho Chi Minh City.</p>
-      </div>
-
-      <!-- placeholder: swap hrefs for real social profiles once created -->
-      <div class="footer__social">
-        <a href="#" aria-label="IRL on LinkedIn">in</a>
-        <a href="#" aria-label="IRL on Facebook">FB</a>
-        <a href="#" aria-label="IRL on Instagram">IG</a>
-      </div>
-    </div>
-
-    <div class="footer__bottom">
-      <p>&copy; <span id="year"></span> IRL. All rights reserved.</p>
-    </div>
+<footer class="on-dark">
+  <div class="wrap foot">
+    <div><a class="logo" href="#top"><span class="mark" aria-hidden="true"><i></i><i></i></span>Odds</a><p>Dating for people with full lives. Launching in Ho Chi Minh City.</p></div>
+    <div><div class="soc"><a href="#">Instagram</a><a href="#">Facebook</a><a href="#">LinkedIn</a></div><div class="copy">© 2026 Odds</div></div>
   </div>
 </footer>
 
-<!-- Behavior lives in script.js, next to this file -->
 <script src="script.js"></script>
 </body>
 </html>

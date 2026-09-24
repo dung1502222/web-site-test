@@ -45,7 +45,7 @@
     if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(input.value.trim())){
       note.className='err'; note.textContent='Enter an email address like name@example.com.'; input.focus(); return;
     }
-    note.className='ok'; note.textContent='You’re on the list. We’ll email you when Odds opens in Saigon.';
+    note.className='ok'; note.textContent='You’re on the list. We’ll email you when odds opens in Saigon.';
     form.querySelector('button').textContent='Applied';
   });
 })();
